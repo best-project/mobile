@@ -57,6 +57,10 @@ class LoginFormComponent extends Component {
       isLoading: true
     });
 
+    
+    this.props.navigation.navigate('Home')
+    
+
     // api call
   }
 

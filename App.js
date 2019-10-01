@@ -33,6 +33,25 @@ import {
   createStackNavigator
 } from 'react-navigation';
 
+const LoginStack = createStackNavigator({
+  Login: {
+    screen: LoginScreen,
+    navigationOptions:({navigation}) => {
+      return {
+        header: null,
+      }
+    }
+  },
+  Register: {
+    screen: RegisterScreen,
+    navigationOptions:({navigation}) => {
+      return {
+        header: null,
+      }
+    }
+  }
+})
+
 
 const ProfileStack = createStackNavigator({
   Profile: {
@@ -151,7 +170,7 @@ const AppDrawerNavigator = createDrawerNavigator({
 
 //SWITCH-NAVIGATION
 const AppSwitchNavigator = createSwitchNavigator({
-  Login: {screen: LoginScreen},
+  Login: {screen: LoginStack},
   Register: {screen: RegisterScreen},
   Home: {screen: AppDrawerNavigator}, //app drawer navigation
   Profile: {screen: Profile},

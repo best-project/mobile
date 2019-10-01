@@ -14,9 +14,9 @@ import LoginFormComponent from './modules/login/LoginForm.component';
 
 class LoginScreen extends Component {
   componentDidMount() {
-    if(this.props.Profile.token) {
-      this.props.navigation.navigate('Home')
-    }
+    // if(this.props.Profile.token) {
+    //   this.props.navigation.navigate('Home')
+    // }
     
   }
   render() {
