@@ -104,7 +104,7 @@ class RegisterFormComponent extends Component {
           onBlur={() => {}}
         />
         <Button 
-          title="Login"
+          title="Register"
           loading={isLoading ? true : false}
           containerStyle={registerFormStyle.submitButton}
           onPress={this._onSubmit}

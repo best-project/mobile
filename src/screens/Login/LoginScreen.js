@@ -21,10 +21,6 @@ class LoginScreen extends Component {
     // } 
   }
 
-  onKeyboardDidShow() {
-    console.log('did show')
-  }
-
   render() {
     return(
       <KeyboardAvoidingView

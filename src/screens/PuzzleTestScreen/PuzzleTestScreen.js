@@ -7,8 +7,8 @@ import {
   StyleSheet
 } from 'react-native';
 
-import ScreenHeader from '../../components/ScreenHeader';
-import ProgressBar from '../../components/ProgressBar';
+import ScreenHeader from '../../common/ScreenHeader';
+import ProgressBar from '../../common/ProgressBar';
 import PuzzleTestQuestionModule from './modules/PuzzleTestQuestion.module';
 import PuzzleTestAnswersListModule from './modules/PuzzleTestAnswer.module';
 import CourseCompletedModule from '../../modules/courses/CourseCompleted.module';

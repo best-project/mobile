@@ -8,13 +8,13 @@ import {
   ImageBackground,
 } from 'react-native';
 
-import BasicInfoCourseStageComponent from './modules/BasicInfoCourseStage.component';
+import BasicInfoCourseStageComponent from './components/BasicInfoCourseStage.component';
 
 import * as FileSystem from 'expo-file-system';
 
 import {Button, Input, Icon} from 'react-native-elements';
 
-import ScreenHeader from '../../components/ScreenHeader';
+import ScreenHeader from '../../common/ScreenHeader';
 
 import pixbayApiService from '../../services/pixbayApiService';
 import OverlayLoader from '../../common/OverlayLoader';

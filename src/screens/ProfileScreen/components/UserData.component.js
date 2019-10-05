@@ -40,7 +40,7 @@ class UserDataComponent extends Component {
 
 const userDataStyle = StyleSheet.create({
   view: {
-    flex: 1,
+    flex: 3,
     borderBottomColor: 'rgb(200,200,200)',
   },
   linearGradient: {

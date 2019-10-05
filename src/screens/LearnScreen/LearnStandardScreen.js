@@ -11,9 +11,9 @@ import {
 
 import {Button} from 'react-native-elements';
 
-import ScreenHeader from '../../components/ScreenHeader';
+import ScreenHeader from '../../common/ScreenHeader';
 import Speaker from '../../common/Speaker';
-import ProgressBar from '../../components/ProgressBar';
+import ProgressBar from '../../common/ProgressBar';
 
 class Question extends Component {
   render() {

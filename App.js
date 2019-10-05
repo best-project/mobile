@@ -7,14 +7,15 @@ import ProfileScreen from './src/screens/ProfileScreen/ProfileScreen';
 import CourseSplashScreen from './src/screens/CourseSplashScreen/CourseSplashScreen';
 import LearnStandard from './src/screens/LearnScreen/LearnStandardScreen';
 import CreateCourse from './src/screens/CreateCourseScreen/CreateCourseScreen';
-import Home from './src/screens/HomeScreen/HomeScreen';
+import HomeScreen from './src/screens/HomeScreen/HomeScreen';
 import Dashboard from './src/screens/DashBoardScreen/modules/DashboardScreen';
 import Settings from './src/screens/SettingsScreen/SettingsScreen';
 import TestScreen from './src/screens/TestScreen/TestScreen';
 import PuzzleTestScreen from './src/screens/PuzzleTestScreen/PuzzleTestScreen';
+import CourseManagerScreen from './src/screens/CourseManagerScreen/CourseManagerScreen';
 
 import { Icon } from 'react-native-elements';
-import { TouchableOpacity } from 'react-native';
+import { TouchableOpacity, Text } from 'react-native';
 
 //REDUX INIT
 import { Provider } from 'react-redux';
@@ -32,11 +33,9 @@ import {
   createBottomTabNavigator,
   createStackNavigator
 } from 'react-navigation';
-import CourseManagerScreen from './src/screens/CourseManagerScreen/CourseManagerScreen';
 
 
 
-//LOGIN STACK
 const LoginStack = createStackNavigator({
   Login: {
     screen: LoginScreen,
@@ -58,7 +57,7 @@ const LoginStack = createStackNavigator({
 
 const HomeStack = createStackNavigator({
   Home: {
-    screen: Home,
+    screen: HomeScreen,
     navigationOptions:({navigation}) => {
       return{
         headerTitle: 'Home',
@@ -189,6 +188,9 @@ const DashboardTabNavigator = createBottomTabNavigator({
     navigationOptions: {
       tabBarIcon: ({tintColor}) => {
         return <Icon name="home" type="font-awesome" color={tintColor} />
+      },
+      tabBarLabel: ({tintColor}) => {
+        return <Text style={{textAlign: 'center', color: tintColor, fontSize: 12}}>Home</Text>
       }
     }
   },
@@ -197,6 +199,9 @@ const DashboardTabNavigator = createBottomTabNavigator({
     navigationOptions: {
       tabBarIcon:({tintColor}) => {
         return <Icon name="user" type="font-awesome" color={tintColor} />
+      },
+      tabBarLabel: ({tintColor}) => {
+        return <Text style={{textAlign: 'center', color: tintColor, fontSize: 12}}>Profile</Text>
       }
     }
   },
@@ -205,7 +210,10 @@ const DashboardTabNavigator = createBottomTabNavigator({
     navigationOptions: {
       tabBarIcon:({tintColor}) => {
         return <Icon name="cogs" type="font-awesome" color={tintColor} />
-      } 
+      },
+      tabBarLabel: ({tintColor}) => {
+        return <Text style={{textAlign: 'center', color: tintColor, fontSize: 12}}>Settings</Text>
+      }
     }
   }
 },{
@@ -213,11 +221,8 @@ const DashboardTabNavigator = createBottomTabNavigator({
     activeTintColor: '#fff',
     inactiveTintColor: 'rgba(255,255,255, 0.2)',
     style: {
-      backgroundColor: '#2089dc',
-      justifyContent: 'center',
-      alignContent: 'center'
-    },
-    //showLabel:false
+      backgroundColor: '#2089dc'
+    }
   }, 
   navigationOptions:({navigation}) => {
     return {
