@@ -5,8 +5,7 @@ import {
   Text,
   StyleSheet
 } from 'react-native';
-
-import IconButton from '../../../../components/common/IconButton';
+import IconButtonComponent from '../../../../common/IconButton.component';
 
 class SocialLoginComponent extends Component {
   _onFacebookClick() {
@@ -25,21 +24,21 @@ class SocialLoginComponent extends Component {
       <View style={socialLoginsStyle.view}> 
         <Text style={socialLoginsStyle.title}>Or login with</Text>
         <View style={socialLoginsStyle.containerView}>
-          <IconButton 
+          <IconButtonComponent
             name="facebook"
             size={50}
             color="#005daa"
             containerColor="#fff"
             onPress={this._onFacebookClick}
           />
-          <IconButton 
+          <IconButtonComponent 
             name="twitter"
             size={50}
             color="#005daa"
             containerColor="#fff"
             onPress={this._onTwitterClick}
           />
-          <IconButton
+          <IconButtonComponent
             name="instagram"
             size={50}
             color="#005daa"

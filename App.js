@@ -56,6 +56,38 @@ const LoginStack = createStackNavigator({
   }
 })
 
+const HomeStack = createStackNavigator({
+  Home: {
+    screen: Home,
+    navigationOptions:({navigation}) => {
+      return{
+        headerTitle: 'Home',
+        headerLeft: (
+          <TouchableOpacity
+            activeOpacity={0.7}
+            onPress={()=> navigation.openDrawer()}
+          >
+            <Icon 
+              name="bars" 
+              type="font-awesome"
+              color="#fff"
+              containerStyle={{paddingLeft: 10}}
+            />
+          </TouchableOpacity>
+        ),
+        headerStyle: {
+          backgroundColor: '#2089dc',
+          elevation: 0
+        },
+        headerTitleStyle: {
+          fontWeight: 'normal',
+          color: '#fff'
+        }
+      }
+    }
+  }
+})
+
 const ProfileStack = createStackNavigator({
   Profile: {
     screen: ProfileScreen,
@@ -117,10 +149,43 @@ const ProfileStack = createStackNavigator({
   }
 })
 
-//BOTTOM-NAVIGATION
-const HomeTabNavigator = createBottomTabNavigator({
+
+const SettingsStack = createStackNavigator({
   Home: {
-    screen: Home,
+    screen: Settings,
+    navigationOptions:({navigation}) => {
+      return{
+        headerTitle: 'Settings',
+        headerLeft: (
+          <TouchableOpacity
+            activeOpacity={0.7}
+            onPress={()=> navigation.openDrawer()}
+          >
+            <Icon 
+              name="bars" 
+              type="font-awesome"
+              color="#fff"
+              containerStyle={{paddingLeft: 10}}
+            />
+          </TouchableOpacity>
+        ),
+        headerStyle: {
+          backgroundColor: '#2089dc',
+          elevation: 0
+        },
+        headerTitleStyle: {
+          fontWeight: 'normal',
+          color: '#fff'
+        }
+      }
+    }
+  }
+})
+
+//BOTTOM-NAVIGATION
+const DashboardTabNavigator = createBottomTabNavigator({
+  Home: {
+    screen: HomeStack,
     navigationOptions: {
       tabBarIcon: ({tintColor}) => {
         return <Icon name="home" type="font-awesome" color={tintColor} />
@@ -136,11 +201,11 @@ const HomeTabNavigator = createBottomTabNavigator({
     }
   },
   Settings: {
-    screen: Settings,
+    screen: SettingsStack,
     navigationOptions: {
       tabBarIcon:({tintColor}) => {
         return <Icon name="cogs" type="font-awesome" color={tintColor} />
-      }
+      } 
     }
   }
 },{
@@ -161,14 +226,9 @@ const HomeTabNavigator = createBottomTabNavigator({
   }
 })
 
-//STACK-NAVIGATION
-const HomeStackNavigator = createStackNavigator({
-  HomeTabNavigator: HomeTabNavigator
-})
-
 //DRAWER-NAVIGATION
 const AppDrawerNavigator = createDrawerNavigator({
-  Home: {screen: HomeStackNavigator}
+  Dashboard: {screen: DashboardTabNavigator}
 })
 
 //SWITCH-NAVIGATION
@@ -208,7 +268,7 @@ class App extends Component {
     } else {
       return (
         <Provider store={store}>
-          <CourseManagerScreen />
+          <AppContainer />
         </Provider>
       );
     }

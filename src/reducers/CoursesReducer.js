@@ -7,7 +7,7 @@ const initialState = {
 
   coursesList: [
     {
-      id: 1,
+      id: 'kq8d2GyQZRci0qCzNI4s',
       name: 'Owoce i warzywa',
       description: 'W tym kursie nauczysz się nazw owoców i warzyw.',
       image: 'https://www.ang.pl/img/slownik/fruit.jpg',
@@ -52,7 +52,7 @@ const initialState = {
       ]
     },
     {
-      id: 13,
+      id: 'TmiZYk3sDmzBV56MwQQO',
       name: 'Kultura',
       description: 'Słowo kultura ma wiele znaczeń. Interpretuje się ją w różny sposób przez przedstawicieli wielu dziedzin. Kulturę można określić jako ogół wytworów ludzi, zarówno fizycznych, materialnych, jak i duchowych, symbolicznych.',
       image: 'https://culture360.asef.org/media/2018/5/european_commission_shutterstock_584963080.jpg',
@@ -210,7 +210,7 @@ const initialState = {
       ]
     },
     {
-      id: 15,
+      id: 'cDV6KacZOz4DeMQ8sn0j',
       name: 'Example Puzzle',
       description: '',
       image: '',

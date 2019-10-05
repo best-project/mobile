@@ -10,14 +10,14 @@ import {
 } from 'react-native-elements';
 
 
-class IconButton extends Component {
+class IconButtonComponent extends Component {
   render() {
     const {name, namespace, size, color, containerColor, containerOpacity, onPress} = this.props;
     return(
       <TouchableOpacity
         onPress={onPress}
         activeOpacity={containerOpacity}
-        style={[iconSocialButtonStyle.view, {
+        style={[iconButtonStyle.view, {
           width: size,
           height: size,
           backgroundColor: containerColor,
@@ -34,7 +34,7 @@ class IconButton extends Component {
   }
 }
 
-IconButton.defaultProps = {
+IconButtonComponent.defaultProps = {
   namespace: 'font-awesome',
   size: 30,
   containerOpacity: 0.7,
@@ -42,7 +42,7 @@ IconButton.defaultProps = {
   containerColor: "#fff"
 }
 
-const iconSocialButtonStyle = StyleSheet.create({
+const iconButtonStyle = StyleSheet.create({
   view: {
     margin: 10,
     justifyContent: 'center',
@@ -50,4 +50,4 @@ const iconSocialButtonStyle = StyleSheet.create({
   },
 });
 
-export default IconButton;
+export default IconButtonComponent;

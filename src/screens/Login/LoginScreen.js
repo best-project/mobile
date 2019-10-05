@@ -8,10 +8,6 @@ import {
   KeyboardAvoidingView
 } from 'react-native';
 
-import {
-  KeyboardAwareScrollView
-} from 'react-native-keyboard-aware-scroll-view'
-
 import { LinearGradient } from 'expo-linear-gradient';
 import BrandLogoComponent from './modules/common/BrandLogo.component';
 import SocialLoginComponent from './modules/login/SocialLogin.component';

@@ -6,9 +6,9 @@ import {
   Image
 } from 'react-native';
 
-import logo from '../../../assets/logo.png';
+import logo from '../../assets/logo.png';
 
-class Logo extends Component {
+class LogoComponent extends Component {
   render() {
     return(
       <View style={logoStyles.view}>
@@ -43,4 +43,4 @@ const logoStyles = StyleSheet.create({
   }
 })
 
-export default Logo;
+export default LogoComponent;

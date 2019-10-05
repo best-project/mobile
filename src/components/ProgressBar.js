@@ -19,8 +19,6 @@ class ProgressBar extends Component {
   }
 }
 
-
-
 const progressBarStyle = StyleSheet.create({
   progressBar: {
     height: 5,

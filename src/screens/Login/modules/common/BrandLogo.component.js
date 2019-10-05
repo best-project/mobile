@@ -5,13 +5,13 @@ import {
   StyleSheet,
 } from 'react-native';
 
-import Logo from '../../../../components/common/Logo';
+import LogoComponent from '../../../../common/LogoComponent';
 
 class BrandLogoComponent extends Component {
   render() {
     return (
       <View style={brandLogoStyles.view}>
-        <Logo />
+        <LogoComponent />
       </View>
     );
   }

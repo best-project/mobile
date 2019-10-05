@@ -5,7 +5,7 @@ import {
   Text,
   StyleSheet
 } from 'react-native';
-import Speaker from '../../../components/common/Speaker';
+import Speaker from '../../../common/Speaker';
 
 class PuzzleTestQuestionModule extends Component {
   render() {

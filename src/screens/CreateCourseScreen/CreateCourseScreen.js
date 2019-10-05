@@ -13,13 +13,14 @@ import BasicInfoCourseStageComponent from './modules/BasicInfoCourseStage.compon
 import * as FileSystem from 'expo-file-system';
 
 import {Button, Input, Icon} from 'react-native-elements';
-import {Dropdown} from 'react-native-material-dropdown';
+
 import ScreenHeader from '../../components/ScreenHeader';
-import IconButton from '../../components/common/IconButton';
+
 import pixbayApiService from '../../services/pixbayApiService';
-import OverlayLoader from '../../components/common/OverlayLoader';
+import OverlayLoader from '../../common/OverlayLoader';
 
 import shorthash from 'shorthash';
+import IconButtonComponent from '../../common/IconButton.component';
 
 class CourseImageSelector extends Component {
   constructor(props) {
@@ -115,14 +116,14 @@ class CourseImageSelector extends Component {
             style={imageSelectorStyle.container}
           >
           {isLoading && <OverlayLoader />}  
-            <IconButton
+            <IconButtonComponent
               name="chevron-left"
               color="rgba(0,0,0,0.5)"
               containerColor="rgba(255,255,255,0.8)"
               size={40}
               onPress={() => this._arrowPress('left')}
             />
-            <IconButton
+            <IconButtonComponent
               name="chevron-right"
               color="rgba(0,0,0,0.5)"
               containerColor="rgba(255,255,255,0.8)"

@@ -10,13 +10,9 @@ import {
 import { Rating } from 'react-native-elements';
 
 import congrats from '../../../assets/icons/congratulations.png';
-import ConfettiComponent from '../../components/common/Confetti.component';
+import ConfettiComponent from '../../common/Confetti.component';
 
 class CourseCompletedModule extends Component {
-  
-  onStartRating() {
-    console.log(start)  
-  }
 
   render() {
     const {mistakes, name} = this.props;

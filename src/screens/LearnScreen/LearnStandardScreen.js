@@ -12,7 +12,7 @@ import {
 import {Button} from 'react-native-elements';
 
 import ScreenHeader from '../../components/ScreenHeader';
-import Speaker from '../../components/common/Speaker';
+import Speaker from '../../common/Speaker';
 import ProgressBar from '../../components/ProgressBar';
 
 class Question extends Component {
