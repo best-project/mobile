@@ -52,61 +52,6 @@ const initialState = {
       ]
     },
     {
-      id: 2,
-      name: 'Człowiek',
-      active: false,
-    },
-    {
-      id: 3,
-      name: 'Praca',
-      active: false,
-    },
-    {
-      id: 4,
-      name: 'Zwierzęta',
-      active: false,
-    },
-    {
-      id: 5,
-      name: 'Dom',
-      active: false,
-    },
-    {
-      id: 6,
-      name: 'Podróże i turystyka',
-      active: false,
-    },
-    {
-      id: 7,
-      name: 'Szkoła',
-      active: false,
-    },
-    {
-      id: 8,
-      name: 'Rośliny',
-      active: false,
-    },
-    {
-      id: 9,
-      name: 'Rodzina',
-      active: false,
-    },
-    {
-      id: 10,
-      name: 'Pogoda',
-      active: false,
-    },
-    {
-      id: 11,
-      name: 'Charakter',
-      active: false,
-    },
-    {
-      id: 12,
-      name: 'Zawody',
-      active: false,
-    },
-    {
       id: 13,
       name: 'Kultura',
       description: 'Słowo kultura ma wiele znaczeń. Interpretuje się ją w różny sposób przez przedstawicieli wielu dziedzin. Kulturę można określić jako ogół wytworów ludzi, zarówno fizycznych, materialnych, jak i duchowych, symbolicznych.',
@@ -263,11 +208,6 @@ const initialState = {
           image: 'https://pixabay.com/get/54e9d3474851ad14f6da8c7dda793f7d1d37dde4564c704c732878dd9549c65c_1280.jpg'
         }
       ]
-    },
-    {
-      id: 14,
-      name: 'Święta',
-      active: false,
     },
     {
       id: 15,

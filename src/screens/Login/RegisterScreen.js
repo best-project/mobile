@@ -3,7 +3,8 @@ import React, { Component } from 'react';
 import {
   View,
   StyleSheet,
-  BackHandler,
+  KeyboardAvoidingView,
+  ScrollView
 } from 'react-native';
 
 import { LinearGradient } from 'expo-linear-gradient';
@@ -14,15 +15,23 @@ import RegisterFormComponent from './modules/register/RegisterForm.component';
 class RegisterScreen extends Component {
   constructor(props) {
     super(props);
+  }
 
-    this.handleBack = (() => {
-      console.log('back')
-    }).bind(this);
+  onKeyboardDidShow() {
+    console.log('did show')
   }
 
   render() {
     return(
-      <View style={registerStyle.view}>
+      <KeyboardAvoidingView
+        style={registerStyle.view}
+        behavior="height"
+        enabled
+      >
+        <ScrollView 
+          contentContainerStyle={{flexGrow: 1}}
+          bounces={false}
+        >
         <LinearGradient 
           colors={['#2089dc', '#68b9ff']}
           style={registerStyle.linearGradient}
@@ -32,7 +41,8 @@ class RegisterScreen extends Component {
             <RegisterFormComponent />
           </View>
         </LinearGradient>
-      </View>
+        </ScrollView>
+      </KeyboardAvoidingView>
     )
   }
 }
@@ -40,18 +50,21 @@ class RegisterScreen extends Component {
 const registerStyle = StyleSheet.create({
   view: {
     flex: 1,
-   },
-   linearGradient: {
-     flex: 1,
-     justifyContent: 'center',
-     alignItems: 'center',
-   },
-   viewContainer: {
-     flex: 1,
-     justifyContent: 'center',
-     alignItems: 'center',
-     width: 90 + '%',
-   }
+    backgroundColor: '#2089dc',
+    
+  },
+  linearGradient: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingVertical: 20,
+  },
+  viewContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 90 + '%',
+  }
 });
 
 export default RegisterScreen;

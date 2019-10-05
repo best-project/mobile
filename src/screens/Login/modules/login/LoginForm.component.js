@@ -28,10 +28,6 @@ class LoginFormComponent extends Component {
     this._onPasswordChange = this._onPasswordChange.bind(this);
     this._onSubmit = this._onSubmit.bind(this);
   }
-
-  componentDidMount() {
-    console.log(this.props)
-  }
   _onLoginChange(text) {
     this.setState({
       login: text

@@ -7,14 +7,17 @@ import {
   Image
 } from 'react-native';
 
-import { AirbnbRating } from 'react-native-elements';
+import { Rating } from 'react-native-elements';
 
 import congrats from '../../../assets/icons/congratulations.png';
 import ConfettiComponent from '../../components/common/Confetti.component';
 
-const reviews = ["Terrible", "Bad", "OK", "Good", "Very Good", "Wow", "Amazing", "Unbelievable"];
-
 class CourseCompletedModule extends Component {
+  
+  onStartRating() {
+    console.log(start)  
+  }
+
   render() {
     const {mistakes, name} = this.props;
 
@@ -36,13 +39,14 @@ class CourseCompletedModule extends Component {
           </Text>
         </View>
         <View style={courseEndedModuleStyle.statisticsView}>
-          <AirbnbRating
-            count={8}
-            reviews={reviews}
-            defaultRating={8  - mistakes}
-            size={20}
+          <Rating 
+            type='star'
+            ratingCount={5}
+            startingValue={5}
+            imageSize={30}
+            readonly
           />
-      </View>
+        </View>
       </View>
     )
   }

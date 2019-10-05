@@ -161,24 +161,36 @@ const afterCourseStyle = StyleSheet.create({
   }
 })
 
-class LearnStandard extends Component {
+class LearnStandardScreen extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       progressLevel: 0,
-      currentQuestion: 0
+      currentQuestion: 0,
+      questionsAmount: 0,
     }
     this._nextButtonPress = this._nextButtonPress.bind(this);
     this._onGoAgain = this._onGoAgain.bind(this);
   }
 
+  componentDidMount() {
+    const {navigation} = this.props;
+    const id = navigation.getParam('id');
+    const {coursesList} = this.props.Courses;
+
+    const course = coursesList.find(item => item.id === id);
+    if(course) {
+      this.setState({
+        questionsAmount: course.data.length
+      })
+    }
+  }
+
   _nextButtonPress () {
-    const {currentQuestion} = this.state;
-    const course = this.props.Courses.coursesList[12];
-    const amountOfQuestions = course.data.length;
-    const progressLevel = Math.floor((currentQuestion + 1)/(amountOfQuestions - 1) * 100);
-    if(currentQuestion <= amountOfQuestions) {
+    const {currentQuestion, questionsAmount} = this.state;
+    const progressLevel = Math.floor((currentQuestion + 1)/(questionsAmount - 1) * 100);
+    if(currentQuestion <= questionsAmount) {
       this.setState({
         progressLevel,
         currentQuestion: this.state.currentQuestion + 1
@@ -197,7 +209,12 @@ class LearnStandard extends Component {
 
   render() {
     const {progressLevel, currentQuestion} = this.state;
-    const course = this.props.Courses.coursesList[12];
+    const {navigation} = this.props;
+    const id = navigation.getParam('id');
+    const {coursesList} = this.props.Courses;
+
+    const course = coursesList.find(item => item.id === id);
+   
     return(
       <View style={learnStyles.view}>
         <ScreenHeader title={course.name} />
@@ -231,4 +248,4 @@ const mapStateToProps = state => ({
   Courses: state.Courses
 })
 
-export default connect(mapStateToProps, {})(LearnStandard);
+export default connect(mapStateToProps, {})(LearnStandardScreen);

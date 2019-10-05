@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 //LOAD SCREENS
 import LoginScreen from './src/screens/Login/LoginScreen';
 import RegisterScreen from './src/screens/Login/RegisterScreen';
-import Profile from './src/screens/ProfileScreen/ProfileScreen';
+import ProfileScreen from './src/screens/ProfileScreen/ProfileScreen';
 import CourseSplashScreen from './src/screens/CourseSplashScreen/CourseSplashScreen';
 import LearnStandard from './src/screens/LearnScreen/LearnStandardScreen';
 import CreateCourse from './src/screens/CreateCourseScreen/CreateCourseScreen';
@@ -32,7 +32,11 @@ import {
   createBottomTabNavigator,
   createStackNavigator
 } from 'react-navigation';
+import CourseManagerScreen from './src/screens/CourseManagerScreen/CourseManagerScreen';
 
+
+
+//LOGIN STACK
 const LoginStack = createStackNavigator({
   Login: {
     screen: LoginScreen,
@@ -52,10 +56,9 @@ const LoginStack = createStackNavigator({
   }
 })
 
-
 const ProfileStack = createStackNavigator({
   Profile: {
-    screen: Profile,
+    screen: ProfileScreen,
     navigationOptions:({navigation}) => {
       return{
         headerTitle: 'Profile',
@@ -173,10 +176,13 @@ const AppSwitchNavigator = createSwitchNavigator({
   Login: {screen: LoginStack},
   Register: {screen: RegisterScreen},
   Home: {screen: AppDrawerNavigator}, //app drawer navigation
-  Profile: {screen: Profile},
+  Profile: {screen: ProfileScreen},
   Dashboard: {screen: Dashboard},
   Settings: {screen: Settings},
-  LearnStandard: {screen: LearnStandard}
+  LearnStandard: {screen: LearnStandard},
+  CreateCourse: {screen: CreateCourse},
+  Test: {screen: TestScreen},
+  PuzzleTest: {screen: PuzzleTestScreen}
 });
 
 const AppContainer = createAppContainer(AppSwitchNavigator);
@@ -202,7 +208,7 @@ class App extends Component {
     } else {
       return (
         <Provider store={store}>
-          <AppContainer />
+          <CourseManagerScreen />
         </Provider>
       );
     }

@@ -18,6 +18,7 @@
     "react-native-elements": "^1.1.0",
     "react-native-flexbox-grid": "^0.3.2",
     "react-native-gesture-handler": "~1.3.0",
+    "react-native-keyboard-aware-scroll-view": "^0.9.1",
     "react-native-material-dropdown": "^0.11.1",
     "react-native-web": "^0.11.4",
     "react-navigation": "^3.12.1",

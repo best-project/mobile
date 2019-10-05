@@ -10,78 +10,16 @@ import {
 } from 'react-native';
 
 import {
-  Avatar,
   ListItem
 } from 'react-native-elements';
 
-import { LinearGradient } from 'expo-linear-gradient';
-
-class UserData extends Component {
-  render() {
-    const {nickname, avatar} = this.props
-    return(
-      <View style={userDataStyle.view}>
-        <LinearGradient 
-          colors={['#2089dc', '#68b9ff']}
-          style={userDataStyle.linearGradient}
-        >
-          <View style={userDataStyle.avatarBackground}>
-            <Avatar
-              rounded
-              size='xlarge'
-              containerStyle={userDataStyle.avatar}
-              source={{
-                uri: avatar
-            }} 
-            />
-          </View>
-          <Text style={userDataStyle.username}>{nickname}</Text>
-        </LinearGradient>
-      </View>
-    );
-  }
-}
-
-const userDataStyle = StyleSheet.create({
-  view: {
-    flex: 1,
-    borderBottomColor: 'rgb(200,200,200)',
-  },
-  linearGradient: {
-    flex: 1,
-    width: 100 + '%',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  avatarBackground: {
-    borderStyle: 'dashed',
-    borderWidth: 2,
-    borderColor: '#2089dc',
-    borderRadius: 100,
-    padding: 10,
-  },
-  avatar: {
-    borderWidth: 2,
-    borderColor: '#fafafa',
-    borderStyle: 'solid'
-  },
-  row: {
-    flex: 1,
-  },
-  username: {
-    fontSize: 26,
-    paddingTop: 10,
-    fontWeight: '500',
-    color: '#fafafa',
-  }
-});
+import UserDataComponent from './components/UserData.component';
 
 class MyCourses extends Component {
   keyExtractor(item, index) {
     return index.toString();
   }
-  renderItem = ({item}) => (
-    
+  renderItem = ({item}) => ( 
     <ListItem
       title={item.name}
       containerStyle={item.active ? myCoursesStyle.active : myCoursesStyle.inactive}
@@ -148,7 +86,7 @@ class Profile extends Component {
     const {navigation} = this.props;
     return (
       <View style={profileStyle.view}>
-        <UserData 
+        <UserDataComponent 
           nickname={nickname}
           avatar={avatar}
         />

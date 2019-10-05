@@ -5,41 +5,59 @@ import { connect } from 'react-redux';
 import {
   View,
   StyleSheet,
+  KeyboardAvoidingView
 } from 'react-native';
+
+import {
+  KeyboardAwareScrollView
+} from 'react-native-keyboard-aware-scroll-view'
 
 import { LinearGradient } from 'expo-linear-gradient';
 import BrandLogoComponent from './modules/common/BrandLogo.component';
 import SocialLoginComponent from './modules/login/SocialLogin.component';
 import LoginFormComponent from './modules/login/LoginForm.component';
+import { ScrollView } from 'react-native-gesture-handler';
 
 class LoginScreen extends Component {
   componentDidMount() {
     // if(this.props.Profile.token) {
     //   this.props.navigation.navigate('Home')
-    // }
-    
+    // } 
   }
+
+  onKeyboardDidShow() {
+    console.log('did show')
+  }
+
   render() {
     return(
-      <View style={loginStyles.view}>
-        <LinearGradient 
-          colors={['#2089dc', '#68b9ff']}
-          style={loginStyles.linearGradient}
+      <KeyboardAvoidingView
+        style={loginStyles.view}
+        behavior="padding"
+      >
+        <ScrollView 
+          contentContainerStyle={{flexGrow: 1}}
+          bounces={false}
         >
-          <View style={loginStyles.viewContainer}>
-            <BrandLogoComponent />
-            <LoginFormComponent navigation={this.props.navigation}/>
-            <SocialLoginComponent />
-          </View>
-        </LinearGradient>
-      </View>
+          <LinearGradient 
+            colors={['#2089dc', '#68b9ff']}
+            style={loginStyles.linearGradient}
+          >
+            <View style={loginStyles.viewContainer}>
+              <BrandLogoComponent />
+              <LoginFormComponent navigation={this.props.navigation}/>
+              <SocialLoginComponent />
+            </View>
+          </LinearGradient>
+        </ScrollView>
+      </KeyboardAvoidingView>
     );
   }
 }
 
 const loginStyles = StyleSheet.create({
   view: {
-   flex: 1,
+    flex: 2
   },
   linearGradient: {
     flex: 1,

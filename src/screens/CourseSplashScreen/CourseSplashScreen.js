@@ -108,12 +108,13 @@ const statisticsStyle = StyleSheet.create({
 });
 
 class StartButton extends Component {
+
   render() {
     return(
       <View style={startBtnStyle.view}>
         <Button 
           title="Start now" 
-          
+          onPress={this.props.onClick()}
           buttonStyle={startBtnStyle.button}
         />
       </View>
@@ -133,11 +134,23 @@ const startBtnStyle = StyleSheet.create({
 })
 
 class CourseSplashScreen extends Component {
+  constructor(props) {
+    super(props);
+
+    this.startButtonClick = this.startButtonClick.bind(this);
+  }
   
   static navigationOptions = ({navigation}) => ({
     title: navigation.state.params.title
   });
-  
+
+
+  startButtonClick() {
+    this.props.navigation.navigate('LearnStandard', {
+      id: this.props.navigation.getParam('id')
+    })
+  }
+
   render() {
     const {navigation} = this.props;
     const id = navigation.getParam('id');
@@ -148,7 +161,7 @@ class CourseSplashScreen extends Component {
       <View style={splashStyle.view}>
         <Cover course={course} />
         <Statistics course={course} />
-        <StartButton />
+        <StartButton onClick={() => this.startButtonClick}/>
       </View>
     )
   }

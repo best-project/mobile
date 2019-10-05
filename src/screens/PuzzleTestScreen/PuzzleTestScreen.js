@@ -21,10 +21,10 @@ class PuzzleTestScreen extends Component {
       progressLevel: 0,
       currentQuestion: 0,
       validCount: 0,
-      courseCompleted: false,
+      courseCompleted: true,
       mistakesCount: 2
     }
-    this.course = this.props.Courses.coursesList[14];
+    this.course = this.props.Courses.coursesList[2];
 
     this._increaseQuestionIndex = this._increaseQuestionIndex.bind(this);
   }
@@ -46,7 +46,8 @@ class PuzzleTestScreen extends Component {
   }
 
   render() {
-    const course = this.props.Courses.coursesList[14];
+    const course = this.props.Courses.coursesList[2]
+
     const {progressLevel, currentQuestion, courseCompleted, mistakesCount} = this.state;
     if(courseCompleted) {
       return (

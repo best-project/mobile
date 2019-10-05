@@ -70,6 +70,7 @@ class RegisterFormComponent extends Component {
 
   render() {
     const {login, email, password, confirmPassword, isLoading} = this.state;
+    console.log(this.props)
     return(
       <View style={registerFormStyle.view}>
         <LoginFormInput 
