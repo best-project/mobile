@@ -7,11 +7,11 @@ import {
   StyleSheet
 } from 'react-native';
 
-import ScreenHeader from '../../common/ScreenHeader';
-import ProgressBar from '../../common/ProgressBar';
+import ScreenHeader from '../../common/components/ScreenHeader';
+import ProgressBar from '../../common/components/ProgressBar';
 import PuzzleTestQuestionModule from './modules/PuzzleTestQuestion.module';
 import PuzzleTestAnswersListModule from './modules/PuzzleTestAnswer.module';
-import CourseCompletedModule from '../../modules/courses/CourseCompleted.module';
+import CourseCompletedModule from '../../common/modules/CourseCompleted.module';
 
 class PuzzleTestScreen extends Component {
   constructor(props) {

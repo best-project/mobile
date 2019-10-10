@@ -21,10 +21,6 @@ class Profile extends Component {
           nickname={nickname}
           avatar={avatar}
         />
-        {/* <MyCoursesComponent
-          coursesList={coursesList}
-          navigation={navigation}
-        /> */}
         <UserStatisticsComponent 
           points={points}
           level={level}

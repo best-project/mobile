@@ -9,8 +9,8 @@ import {
 
 import { Rating } from 'react-native-elements';
 
-import congrats from '../../../assets/icons/congratulations.png';
-import ConfettiComponent from '../../common/Confetti.component';
+import congrats from '../icons/congratulations.png';
+import ConfettiComponent from '../components/Confetti.component';
 
 class CourseCompletedModule extends Component {
 

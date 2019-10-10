@@ -5,7 +5,7 @@ import {
   StyleSheet
 } from 'react-native';
 
-import {shuffleArray} from '../../../services/helpers';
+import {shuffleArray} from '../../../common/services/helpers';
 
 import PuzzleComponent from '../components/Puzzle.component';
 import AnswerOverlayComponent from '../components/AnswerOverlay.component';

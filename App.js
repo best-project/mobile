@@ -34,12 +34,10 @@ import {
   createStackNavigator
 } from 'react-navigation';
 
-
-
 const LoginStack = createStackNavigator({
   Login: {
     screen: LoginScreen,
-    navigationOptions:({navigation}) => {
+    navigationOptions:() => {
       return {
         header: null,
       }
@@ -47,7 +45,7 @@ const LoginStack = createStackNavigator({
   },
   Register: {
     screen: RegisterScreen,
-    navigationOptions:({navigation}) => {
+    navigationOptions:() => {
       return {
         header: null,
       }
@@ -61,38 +59,6 @@ const HomeStack = createStackNavigator({
     navigationOptions:({navigation}) => {
       return{
         headerTitle: 'Home',
-        headerLeft: (
-          <TouchableOpacity
-            activeOpacity={0.7}
-            onPress={()=> navigation.openDrawer()}
-          >
-            <Icon 
-              name="bars" 
-              type="font-awesome"
-              color="#fff"
-              containerStyle={{paddingLeft: 10}}
-            />
-          </TouchableOpacity>
-        ),
-        headerStyle: {
-          backgroundColor: '#2089dc',
-          elevation: 0
-        },
-        headerTitleStyle: {
-          fontWeight: 'normal',
-          color: '#fff'
-        }
-      }
-    }
-  }
-})
-
-const ProfileStack = createStackNavigator({
-  Profile: {
-    screen: ProfileScreen,
-    navigationOptions:({navigation}) => {
-      return{
-        headerTitle: 'Profile',
         headerLeft: (
           <TouchableOpacity
             activeOpacity={0.7}
@@ -134,6 +100,38 @@ const ProfileStack = createStackNavigator({
             />
           </TouchableOpacity>
           
+        ),
+        headerStyle: {
+          backgroundColor: '#2089dc',
+          elevation: 0
+        },
+        headerTitleStyle: {
+          fontWeight: 'normal',
+          color: '#fff'
+        }
+      }
+    }
+  }
+})
+
+const ProfileStack = createStackNavigator({
+  Profile: {
+    screen: ProfileScreen,
+    navigationOptions:({navigation}) => {
+      return{
+        headerTitle: 'Profile',
+        headerLeft: (
+          <TouchableOpacity
+            activeOpacity={0.7}
+            onPress={()=> navigation.openDrawer()}
+          >
+            <Icon 
+              name="bars" 
+              type="font-awesome"
+              color="#fff"
+              containerStyle={{paddingLeft: 10}}
+            />
+          </TouchableOpacity>
         ),
         headerStyle: {
           backgroundColor: '#2089dc',
@@ -224,7 +222,7 @@ const DashboardTabNavigator = createBottomTabNavigator({
       backgroundColor: '#2089dc'
     }
   }, 
-  navigationOptions:({navigation}) => {
+  navigationOptions:() => {
     return {
       header: null,
     }
@@ -243,7 +241,7 @@ const AppSwitchNavigator = createSwitchNavigator({
   Home: {screen: AppDrawerNavigator}, //app drawer navigation
   Profile: {screen: ProfileScreen},
   Dashboard: {screen: Dashboard},
-  Settings: {screen: Settings},
+  Settings: {screen: SettingsStack},
   LearnStandard: {screen: LearnStandard},
   CreateCourse: {screen: CreateCourse},
   Test: {screen: TestScreen},

@@ -5,7 +5,7 @@ import {
   StyleSheet,
 } from 'react-native';
 
-import LogoComponent from '../../../../common/LogoComponent';
+import LogoComponent from '../../../../common/components/LogoComponent';
 
 class BrandLogoComponent extends Component {
   render() {

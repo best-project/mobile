@@ -9,7 +9,7 @@ import {
   Dimensions
 } from 'react-native'
 import PortletComponent from './components/Portlet.component';
-import ScreenHeader from '../../common/ScreenHeader';
+import ScreenHeader from '../../common/components/ScreenHeader';
 
 
 const CourseManagerScreen = (props) => {

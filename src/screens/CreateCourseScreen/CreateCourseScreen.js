@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 
-import { connect } from 'react-redux';
-
 import {
   View,
   StyleSheet,
@@ -12,15 +10,15 @@ import BasicInfoCourseStageComponent from './components/BasicInfoCourseStage.com
 
 import * as FileSystem from 'expo-file-system';
 
-import {Button, Input, Icon} from 'react-native-elements';
+import {Button} from 'react-native-elements';
 
-import ScreenHeader from '../../common/ScreenHeader';
+import ScreenHeader from '../../common/components/ScreenHeader';
 
-import pixbayApiService from '../../services/pixbayApiService';
-import OverlayLoader from '../../common/OverlayLoader';
+import pixbayApiService from '../../common/services/pixbayApiService';
+import OverlayLoader from '../../common/components/OverlayLoader';
 
 import shorthash from 'shorthash';
-import IconButtonComponent from '../../common/IconButton.component';
+import IconButtonComponent from '../../common/components/IconButton.component';
 
 class CourseImageSelector extends Component {
   constructor(props) {

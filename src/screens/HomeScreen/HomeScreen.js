@@ -4,26 +4,25 @@ import {connect} from 'react-redux';
 
 import {
   View,
-  Text,
   StyleSheet,
-  TouchableOpacity
 } from 'react-native';
-import MyCoursesComponent from '../ProfileScreen/components/MyCourses.component';
+import MyCoursesList from './components/MyCoursesList';
+import MyCoursesListComponent from './components/MyCoursesList.component';
 
-class HomeScreen extends Component {
-  render() {
-    const {coursesList} = this.props.Courses;
-    return (
-      <View style={homeStyle.view}>
-        <MyCoursesComponent coursesList={coursesList} />
-      </View>
-    )
-  }
+const HomeScreen = (props) => {
+  const {coursesList} = props.Courses;  
+  return (
+    <View style={homeStyle.view}>
+      {/* <MyCoursesList coursesList={coursesList} navigation={props.navigation} /> */}
+      <MyCoursesListComponent coursesList={coursesList} navigation={props.navigation} />
+    </View>
+  )
 }
 
 const homeStyle = StyleSheet.create({
   view: {
-    flex: 1
+    flex: 1,
+    backgroundColor: '#f4f4f4'
   }
 })
 

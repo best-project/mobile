@@ -5,12 +5,12 @@ import {
   StyleSheet,
   Text
 } from 'react-native';
-import SeparatorComponent from '../../../common/Separator.Component';
+import SeparatorComponent from '../../../common/components/Separator.Component';
 
 const UserStatisticsComponent = (props) => {
   return (
     <View style={userStatisticsStyle.view}>
-      <SeparatorComponent />
+      <SeparatorComponent color="#68b9ff" />
       <Text style={userStatisticsStyle.titleText}>Statistics</Text>
       <View style={userStatisticsStyle.statisticsView}>
         
@@ -39,7 +39,7 @@ const UserStatisticsComponent = (props) => {
 const userStatisticsStyle = StyleSheet.create({
   view: {
     flex: 2,
-    backgroundColor: '#68b9ff'
+    backgroundColor: '#fafafa'
   },
   statisticsView: {
     flex: 1,
@@ -47,7 +47,7 @@ const userStatisticsStyle = StyleSheet.create({
   },
   titleText: {
     fontSize: 20,
-    color: '#fff',
+    color: '#68b9ff',
     textTransform: 'uppercase',
     alignSelf: 'center'
   },
@@ -59,12 +59,12 @@ const userStatisticsStyle = StyleSheet.create({
   circleWrapperView: {
     borderStyle: 'dashed',
     borderWidth: 2,
-    borderColor: '#fff',
+    borderColor: '#68b9ff',
     borderRadius: 100,
     padding: 2,
   },
   circleInnerView: {
-    backgroundColor: '#fff',
+    backgroundColor: '#68b9ff',
     borderRadius: 1000,
     height: 100,
     width: 100,
@@ -72,12 +72,12 @@ const userStatisticsStyle = StyleSheet.create({
     alignItems: 'center'
   },
   circleText: {
-    color: '#68b9ff',
+    color: '#fafafa',
     fontSize: 24
   },
   subcircleText: {
     fontSize: 20,
-    color: '#fff',
+    color: '#68b9ff',
     paddingTop: 5,
   }
 })

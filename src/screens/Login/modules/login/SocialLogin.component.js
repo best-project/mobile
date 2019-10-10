@@ -5,11 +5,12 @@ import {
   Text,
   StyleSheet
 } from 'react-native';
-import IconButtonComponent from '../../../../common/IconButton.component';
+import IconButtonComponent from '../../../../common/components//IconButton.component';
+import socialLoginsService from '../../../../common/services/social-logins.service';
 
 class SocialLoginComponent extends Component {
   _onFacebookClick() {
-    console.log('fb click')
+    socialLoginsService.facebookLogin()
   }
 
   _onTwitterClick() {

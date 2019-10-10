@@ -11,7 +11,7 @@ import {
   ListItem
 } from 'react-native-elements';
 
-class MyCoursesComponent extends Component {
+class MyCoursesList extends Component {
   keyExtractor(item, index) {
     return index.toString();
   }
@@ -75,4 +75,4 @@ const myCoursesStyle = StyleSheet.create({
   }
 });
 
-export default MyCoursesComponent;
+export default MyCoursesList;

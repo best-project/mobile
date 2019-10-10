@@ -5,7 +5,7 @@ import {
   StyleSheet,
 } from 'react-native';
 
-import {mixDifferentAnswersIndexes} from '../../../services/helpers';
+import {mixDifferentAnswersIndexes} from '../../../common/services/helpers';
 import AnswerComponent from '../components/Answer.component';
 
 
