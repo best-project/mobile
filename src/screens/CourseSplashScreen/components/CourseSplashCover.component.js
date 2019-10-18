@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import {
   View,
@@ -8,19 +8,16 @@ import {
 } from 'react-native';
 
 
-class CourseSplashCoverComponent extends Component {
-  render() {
-    const {image, description} = this.props.course;
-    return (
-      <View style={coverStyle.view}>
-        <ImageBackground source={{uri: image}} style={coverStyle.background}>
-          <View style={coverStyle.textContainer}>
-            <Text style={coverStyle.description}>{description}</Text>
-          </View>
-        </ImageBackground>
-      </View>
-    )
-  }
+const CourseSplashCoverComponent = (props) => {
+  return (
+    <View style={coverStyle.view}>
+      <ImageBackground source={{uri: props.course.image}} style={coverStyle.background}>
+        <View style={coverStyle.textContainer}>
+          <Text style={coverStyle.description}>{props.course.description}</Text>
+        </View>
+      </ImageBackground>
+    </View>
+  )
 }
 
 const coverStyle = StyleSheet.create({

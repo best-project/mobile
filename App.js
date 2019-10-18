@@ -1,21 +1,14 @@
 import React, {Component} from 'react';
 
 //LOAD SCREENS
-import LoginScreen from './src/screens/Login/LoginScreen';
-import RegisterScreen from './src/screens/Login/RegisterScreen';
 import ProfileScreen from './src/screens/ProfileScreen/ProfileScreen';
-import CourseSplashScreen from './src/screens/CourseSplashScreen/CourseSplashScreen';
-import LearnStandard from './src/screens/LearnScreen/LearnStandardScreen';
 import CreateCourse from './src/screens/CreateCourseScreen/CreateCourseScreen';
-import HomeScreen from './src/screens/HomeScreen/HomeScreen';
 import Dashboard from './src/screens/DashBoardScreen/modules/DashboardScreen';
-import Settings from './src/screens/SettingsScreen/SettingsScreen';
 import TestScreen from './src/screens/TestScreen/TestScreen';
 import PuzzleTestScreen from './src/screens/PuzzleTestScreen/PuzzleTestScreen';
-import CourseManagerScreen from './src/screens/CourseManagerScreen/CourseManagerScreen';
 
 import { Icon } from 'react-native-elements';
-import { TouchableOpacity, Text } from 'react-native';
+import { Text } from 'react-native';
 
 //REDUX INIT
 import { Provider } from 'react-redux';
@@ -31,158 +24,18 @@ import {
   createAppContainer,
   createDrawerNavigator,
   createBottomTabNavigator,
-  createStackNavigator
 } from 'react-navigation';
 
-const LoginStack = createStackNavigator({
-  Login: {
-    screen: LoginScreen,
-    navigationOptions:() => {
-      return {
-        header: null,
-      }
-    }
-  },
-  Register: {
-    screen: RegisterScreen,
-    navigationOptions:() => {
-      return {
-        header: null,
-      }
-    }
-  }
-})
-
-const HomeStack = createStackNavigator({
-  Home: {
-    screen: HomeScreen,
-    navigationOptions:({navigation}) => {
-      return{
-        headerTitle: 'Home',
-        headerLeft: (
-          <TouchableOpacity
-            activeOpacity={0.7}
-            onPress={()=> navigation.openDrawer()}
-          >
-            <Icon 
-              name="bars" 
-              type="font-awesome"
-              color="#fff"
-              containerStyle={{paddingLeft: 10}}
-            />
-          </TouchableOpacity>
-        ),
-        headerStyle: {
-          backgroundColor: '#2089dc',
-          elevation: 0
-        },
-        headerTitleStyle: {
-          fontWeight: 'normal',
-          color: '#fff'
-        }
-      }
-    }
-  },
-  CourseSplash: {
-    screen: CourseSplashScreen,
-    navigationOptions:({navigation}) => {
-      return{
-        headerLeft: (
-          <TouchableOpacity
-            activeOpacity={0.7}
-            onPress={()=> navigation.goBack()}
-          >
-            <Icon 
-              name="arrow-left" 
-              type="font-awesome"
-              color="#fff"
-              containerStyle={{paddingLeft: 10}}
-            />
-          </TouchableOpacity>
-          
-        ),
-        headerStyle: {
-          backgroundColor: '#2089dc',
-          elevation: 0
-        },
-        headerTitleStyle: {
-          fontWeight: 'normal',
-          color: '#fff'
-        }
-      }
-    }
-  }
-})
-
-const ProfileStack = createStackNavigator({
-  Profile: {
-    screen: ProfileScreen,
-    navigationOptions:({navigation}) => {
-      return{
-        headerTitle: 'Profile',
-        headerLeft: (
-          <TouchableOpacity
-            activeOpacity={0.7}
-            onPress={()=> navigation.openDrawer()}
-          >
-            <Icon 
-              name="bars" 
-              type="font-awesome"
-              color="#fff"
-              containerStyle={{paddingLeft: 10}}
-            />
-          </TouchableOpacity>
-        ),
-        headerStyle: {
-          backgroundColor: '#2089dc',
-          elevation: 0
-        },
-        headerTitleStyle: {
-          fontWeight: 'normal',
-          color: '#fff'
-        }
-      }
-    }
-  }
-})
-
-
-const SettingsStack = createStackNavigator({
-  Home: {
-    screen: Settings,
-    navigationOptions:({navigation}) => {
-      return{
-        headerTitle: 'Settings',
-        headerLeft: (
-          <TouchableOpacity
-            activeOpacity={0.7}
-            onPress={()=> navigation.openDrawer()}
-          >
-            <Icon 
-              name="bars" 
-              type="font-awesome"
-              color="#fff"
-              containerStyle={{paddingLeft: 10}}
-            />
-          </TouchableOpacity>
-        ),
-        headerStyle: {
-          backgroundColor: '#2089dc',
-          elevation: 0
-        },
-        headerTitleStyle: {
-          fontWeight: 'normal',
-          color: '#fff'
-        }
-      }
-    }
-  }
-})
+import HomeStackNavigation from './navigation/HomeStack.navigation';
+import LoginStackNavigation from './navigation/LoginStack.navigation';
+import ProfileStackNavigation from './navigation/ProfileStack.navigation';
+import SettingsStackNavigation from './navigation/SettingsStack.navigation';
+import CourseManagerScreen from './src/screens/CourseManagerScreen/CourseManagerScreen';
 
 //BOTTOM-NAVIGATION
 const DashboardTabNavigator = createBottomTabNavigator({
   Home: {
-    screen: HomeStack,
+    screen: HomeStackNavigation,
     navigationOptions: {
       tabBarIcon: ({tintColor}) => {
         return <Icon name="home" type="font-awesome" color={tintColor} />
@@ -193,7 +46,7 @@ const DashboardTabNavigator = createBottomTabNavigator({
     }
   },
   ProfileStack: {
-    screen: ProfileStack,
+    screen: ProfileStackNavigation,
     navigationOptions: {
       tabBarIcon:({tintColor}) => {
         return <Icon name="user" type="font-awesome" color={tintColor} />
@@ -204,7 +57,7 @@ const DashboardTabNavigator = createBottomTabNavigator({
     }
   },
   Settings: {
-    screen: SettingsStack,
+    screen: SettingsStackNavigation,
     navigationOptions: {
       tabBarIcon:({tintColor}) => {
         return <Icon name="cogs" type="font-awesome" color={tintColor} />
@@ -236,17 +89,15 @@ const AppDrawerNavigator = createDrawerNavigator({
 
 //SWITCH-NAVIGATION
 const AppSwitchNavigator = createSwitchNavigator({
-  Login: {screen: LoginStack},
-  Register: {screen: RegisterScreen},
+  Login: {screen: LoginStackNavigation},
   Home: {screen: AppDrawerNavigator}, //app drawer navigation
   Profile: {screen: ProfileScreen},
   Dashboard: {screen: Dashboard},
-  Settings: {screen: SettingsStack},
-  LearnStandard: {screen: LearnStandard},
+  Settings: {screen: SettingsStackNavigation},
   CreateCourse: {screen: CreateCourse},
   Test: {screen: TestScreen},
   PuzzleTest: {screen: PuzzleTestScreen}
-});
+},);
 
 const AppContainer = createAppContainer(AppSwitchNavigator);
 

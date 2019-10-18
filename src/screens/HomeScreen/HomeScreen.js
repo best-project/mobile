@@ -11,6 +11,7 @@ import MyCoursesListComponent from './components/MyCoursesList.component';
 
 const HomeScreen = (props) => {
   const {coursesList} = props.Courses;  
+  console.log(coursesList.length)
   return (
     <View style={homeStyle.view}>
       {/* <MyCoursesList coursesList={coursesList} navigation={props.navigation} /> */}

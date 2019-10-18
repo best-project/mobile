@@ -19,7 +19,8 @@ const initialState = {
       data: [
         {
           word: 'apple',
-          translate: 'jabłko'
+          translate: 'jabłko',
+          
         },
         {
           word: 'aubergine',
@@ -212,8 +213,8 @@ const initialState = {
     {
       id: 'cDV6KacZOz4DeMQ8sn0j',
       name: 'Example Puzzle',
-      description: '',
-      image: '',
+      description: 'Example puzzle test',
+      image: 'http://stxcieszyn.pl/images/categories/200.jpg',
       language: 'en',
       inProgress: false,
       active: false,

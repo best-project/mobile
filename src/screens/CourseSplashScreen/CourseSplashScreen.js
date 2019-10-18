@@ -26,7 +26,8 @@ class CourseSplashScreen extends Component {
 
   startButtonClick() {
     this.props.navigation.navigate('LearnStandard', {
-      id: this.props.navigation.getParam('id')
+      id: this.props.navigation.getParam('id'),
+      title: this.props.navigation.getParam('title')
     })
   }
 
@@ -39,11 +40,12 @@ class CourseSplashScreen extends Component {
       <View style={splashStyle.view}>
         <CourseSplashCoverComponent course={course} />
         <CourseSplashStatisticsComponent course={course} />
-        <CourseSplashStartButtonComponent onClick={() => this.startButtonClick}/>
+        <CourseSplashStartButtonComponent onClick={this.startButtonClick}/>
       </View>
     )
   }
 }
+
 
 const splashStyle = StyleSheet.create({
   view: {

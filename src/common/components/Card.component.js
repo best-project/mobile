@@ -4,22 +4,33 @@ import {
   View,
   StyleSheet,
   Text,
-  ImageBackground
+  ImageBackground,
+  TouchableOpacity
 } from 'react-native';
+import { Rating } from 'react-native-ratings';
 
 const CardComponent = (props) => {
   return (
-    <View style={[portletCardStyle.view, {backgroundColor: props.backgroundColor, height: props.height}]}>
-      <ImageBackground source={{uri: 'https://www.ang.pl/img/slownik/fruit.jpg'}} style={portletCardStyle.imageView} imageStyle={{opacity: 0.9}}>
+    <View style={[portletCardStyle.view, {backgroundColor: props.backgroundColor, minHeight: props.height}]}>
+      <TouchableOpacity onPress={props.onClick} activeOpacity={0.7}>
+      <ImageBackground source={{uri: props.image}} style={portletCardStyle.imageView} imageStyle={{opacity: 0.9}}>
       </ImageBackground>
+
       <View style={portletCardStyle.contentView}>
         <Text style={portletCardStyle.titleText}>{props.title}</Text>
         <Text style={portletCardStyle.descriptionText}>{props.description}</Text>
         <View style={portletCardStyle.rateView}>
+          <Rating 
+            imageSize={18}
+            readonly
+            startingValue={props.rate}
+            style={portletCardStyle.rating}
+          />
+
           <Text style={portletCardStyle.rateText}>{props.rate}</Text>
         </View>
       </View>
-        
+      </TouchableOpacity>
     </View>
   )
 }
@@ -37,6 +48,15 @@ const portletCardStyle = StyleSheet.create({
     borderColor: '#fff',
     borderWidth: 5,
     borderStyle: 'solid',
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.15,
+    shadowRadius: 3.84,
+    elevation: 5,
+    marginVertical: 10,
   },
   imageView: {
     height: 180,
@@ -54,7 +74,6 @@ const portletCardStyle = StyleSheet.create({
     borderTopRightRadius: 5,
   },
   contentView: {
-    height: 50,
     paddingLeft: 15,
     paddingVertical: 5,
   },
@@ -66,6 +85,17 @@ const portletCardStyle = StyleSheet.create({
   descriptionText: {
     fontSize: 14,
     color: '#757575',
+  },
+  rateView: {
+    paddingTop: 15,
+
+  },
+  rating: {
+   
+  },
+  rateText: {
+    color: '#757575',
+    alignSelf: 'center'
   }
 })
 

@@ -13,7 +13,7 @@ class CourseSplashStartButtonComponent extends Component {
       <View style={startBtnStyle.view}>
         <Button 
           title="Start now" 
-          onPress={this.props.onClick()}
+          onPress={this.props.onClick}
           buttonStyle={startBtnStyle.button}
         />
       </View>
