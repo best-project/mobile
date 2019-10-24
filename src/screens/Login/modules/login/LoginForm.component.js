@@ -1,28 +1,21 @@
-import React, { Component } from 'react';
-
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity
-} from 'react-native';
-
-import {Button} from 'react-native-elements';
-import LoginFormInputComponent from '../common/LoginFormInput.component';
+import React, { Component } from "react";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { Button } from "react-native-elements";
+import LoginFormInputComponent from "../../components/LoginFormInput.component";
 
 class LoginFormComponent extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      login: '',
-      password: '',
+      login: "",
+      password: "",
       isLoading: false,
       errors: {
-        login: '',
-        password: ''
+        login: "",
+        password: ""
       }
-    }
+    };
 
     this._onLoginChange = this._onLoginChange.bind(this);
     this._onPasswordChange = this._onPasswordChange.bind(this);
@@ -35,11 +28,11 @@ class LoginFormComponent extends Component {
   }
 
   _onLoginBlur() {
-    console.log('login blur')
+    console.log("login blur");
   }
 
   _onPasswordBlur() {
-    console.log('passwd blur')
+    console.log("passwd blur");
   }
 
   _onPasswordChange(text) {
@@ -53,26 +46,24 @@ class LoginFormComponent extends Component {
       isLoading: true
     });
 
-    
-    this.props.navigation.navigate('Home')
-    
+    this.props.navigation.navigate("Home");
 
     // api call
   }
 
   _onForgot() {
-    console.log('forgot');
+    console.log("forgot");
   }
 
   _onNewAccount() {
-    this.props.navigation.navigate('Register');
+    this.props.navigation.navigate("Register");
   }
 
   render() {
-    const {login, password, isLoading, errors} = this.state;
-    return(
+    const { login, password, isLoading, errors } = this.state;
+    return (
       <View style={loginFormStyle.view}>
-        <LoginFormInputComponent 
+        <LoginFormInputComponent
           type="Login"
           iconName="user"
           value={login}
@@ -89,52 +80,41 @@ class LoginFormComponent extends Component {
           secure={true}
           errorMessage={errors.password}
         />
-        <Button 
-          title="Login"
-          loading={isLoading}
-          containerStyle={loginFormStyle.submitButton}
-          onPress={this._onSubmit}
-        />
+        <Button title="Login" loading={isLoading} containerStyle={loginFormStyle.submitButton} onPress={this._onSubmit} />
         <View style={loginFormStyle.options}>
-          <TouchableOpacity
-            onPress={this._onForgot}
-            activeOpacity={0.7}
-          >
+          <TouchableOpacity onPress={this._onForgot} activeOpacity={0.7}>
             <Text style={loginFormStyle.optionText}>Forgot password?</Text>
           </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => this._onNewAccount()}
-            activeOpacity={0.7}
-          >
+          <TouchableOpacity onPress={() => this._onNewAccount()} activeOpacity={0.7}>
             <Text style={loginFormStyle.optionText}>New user? Sign up</Text>
           </TouchableOpacity>
         </View>
       </View>
-    )
+    );
   }
 }
 
 const loginFormStyle = StyleSheet.create({
   view: {
     flex: 1,
-    alignItems: 'center',
+    alignItems: "center",
     paddingTop: 15,
-    width: 90 + '%'
+    width: 90 + "%"
   },
   submitButton: {
     marginTop: 10,
-    width: 100 + '%'
+    width: 100 + "%"
   },
   options: {
-    width: 100 + '%',
+    width: 100 + "%",
     paddingTop: 10,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  }, 
+    flexDirection: "row",
+    justifyContent: "space-between"
+  },
   optionText: {
-    color: '#fff',
+    color: "#fff",
     fontSize: 12
   }
-})
+});
 
 export default LoginFormComponent;

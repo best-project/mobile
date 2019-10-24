@@ -1,19 +1,14 @@
-import React from 'react';
+import React from "react";
+import { View, StyleSheet, Text } from "react-native";
+import SeparatorComponent from "../../../common/components/Separator.Component";
+import globalStyles from "../../../common/style/global.style";
 
-import {
-  View,
-  StyleSheet,
-  Text
-} from 'react-native';
-import SeparatorComponent from '../../../common/components/Separator.Component';
-
-const UserStatisticsComponent = (props) => {
+const UserStatisticsComponent = props => {
   return (
     <View style={userStatisticsStyle.view}>
       <SeparatorComponent color="#68b9ff" />
       <Text style={userStatisticsStyle.titleText}>Statistics</Text>
       <View style={userStatisticsStyle.statisticsView}>
-        
         <View style={userStatisticsStyle.circleView}>
           <View style={userStatisticsStyle.circleWrapperView}>
             <View style={userStatisticsStyle.circleInnerView}>
@@ -32,55 +27,53 @@ const UserStatisticsComponent = (props) => {
         </View>
       </View>
     </View>
-    
-  )
-}
+  );
+};
 
 const userStatisticsStyle = StyleSheet.create({
   view: {
     flex: 2,
-    backgroundColor: '#fafafa'
+    backgroundColor: "#fafafa"
   },
   statisticsView: {
     flex: 1,
-    flexDirection: 'row',
+    flexDirection: "row"
   },
   titleText: {
     fontSize: 20,
-    color: '#68b9ff',
-    textTransform: 'uppercase',
-    alignSelf: 'center'
+    color: globalStyles.colors.secondaryBlue,
+    textTransform: "uppercase",
+    alignSelf: "center"
   },
   circleView: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
+    justifyContent: "center",
+    alignItems: "center"
   },
   circleWrapperView: {
-    borderStyle: 'dashed',
+    borderStyle: "dashed",
     borderWidth: 2,
-    borderColor: '#68b9ff',
+    borderColor: globalStyles.colors.secondaryBlue,
     borderRadius: 100,
-    padding: 2,
+    padding: 2
   },
   circleInnerView: {
-    backgroundColor: '#68b9ff',
+    backgroundColor: globalStyles.colors.secondaryBlue,
     borderRadius: 1000,
     height: 100,
     width: 100,
-    justifyContent: 'center',
-    alignItems: 'center'
+    justifyContent: "center",
+    alignItems: "center"
   },
   circleText: {
-    color: '#fafafa',
+    color: "#fafafa",
     fontSize: 24
   },
   subcircleText: {
     fontSize: 20,
-    color: '#68b9ff',
-    paddingTop: 5,
+    color: globalStyles.colors.secondaryBlue,
+    paddingTop: 5
   }
-})
-
+});
 
 export default UserStatisticsComponent;

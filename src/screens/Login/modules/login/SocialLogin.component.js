@@ -1,73 +1,49 @@
-import React, { Component } from 'react'
+import React from "react";
+import { View, Text, StyleSheet } from "react-native";
+import socialLoginsService from "../../../../common/services/social-logins.service";
+import SocialIconButtonComponent from "../../components/SocialIconButton.component";
 
-import {
-  View,
-  Text,
-  StyleSheet
-} from 'react-native';
-import IconButtonComponent from '../../../../common/components//IconButton.component';
-import socialLoginsService from '../../../../common/services/social-logins.service';
-
-class SocialLoginComponent extends Component {
-  _onFacebookClick() {
-    socialLoginsService.facebookLogin()
+const SocialLoginComponent = props => {
+  function facebookClick() {
+    socialLoginsService.facebookLogin();
   }
 
-  _onTwitterClick() {
-    console.log('twitter click')
+  function twitterClick() {
+    console.log("twitter click");
   }
 
-  _onInstagramClick() {
-    console.log('ig click')
+  function instagramClick() {
+    console.log("ig click");
   }
-  render() {
-    return (
-      <View style={socialLoginsStyle.view}> 
-        <Text style={socialLoginsStyle.title}>Or login with</Text>
-        <View style={socialLoginsStyle.containerView}>
-          <IconButtonComponent
-            name="facebook"
-            size={50}
-            color="#005daa"
-            containerColor="#fff"
-            onPress={this._onFacebookClick}
-          />
-          <IconButtonComponent 
-            name="twitter"
-            size={50}
-            color="#005daa"
-            containerColor="#fff"
-            onPress={this._onTwitterClick}
-          />
-          <IconButtonComponent
-            name="instagram"
-            size={50}
-            color="#005daa"
-            containerColor="#fff"
-            onPress={this._onInstagramClick}
-          />
-        </View>
+
+  return (
+    <View style={socialLoginsStyle.view}>
+      <Text style={socialLoginsStyle.title}>Or login with</Text>
+      <View style={socialLoginsStyle.containerView}>
+        <SocialIconButtonComponent name="facebook" onPress={facebookClick} />
+        <SocialIconButtonComponent name="twitter" onPress={twitterClick} />
+        <SocialIconButtonComponent name="instagram" onPress={instagramClick} />
       </View>
-    ) 
-  }
-}
+    </View>
+  );
+};
 
 const socialLoginsStyle = StyleSheet.create({
   view: {
     flex: 1,
-    width:90 + '%',
-    justifyContent: 'center',
-    alignItems: 'center'
+    width: 90 + "%",
+    justifyContent: "center",
+    alignItems: "center"
   },
   title: {
-    color: '#fff'
+    color: "#fff"
   },
   containerView: {
     marginTop: 10,
-    width: 100 + '%',
-    flexDirection: 'row',
-    justifyContent: 'center'
+    width: 100 + "%",
+    flexDirection: "row",
+    justifyContent: "center"
   }
-})
+});
 
 export default SocialLoginComponent;

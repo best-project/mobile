@@ -1,14 +1,14 @@
-const APP_ID = '975787449421497';
+import * as Facebook from "expo-facebook";
+import { Alert } from "react-native";
 
-import * as Facebook from 'expo-facebook';
-import {Alert} from 'react-native';
+
+const APP_ID = "975787449421497";
 
 class SocialLoginsService {
   async facebookLogin() {
-
     Facebook.logInWithReadPermissionsAsync(APP_ID)
-    .then(response => console.log(response))
-    .catch((error) => console.log(error))
+      .then(response => console.log(response))
+      .catch(error => console.log(error));
     // try {
     //   const {
     //     type,

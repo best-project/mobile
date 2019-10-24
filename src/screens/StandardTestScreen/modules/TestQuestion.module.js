@@ -1,16 +1,11 @@
-import React, { Component } from 'react';
-
-import {
-  View,
-  Text,
-  StyleSheet
-} from 'react-native';
-import Speaker from '../../../common/components/Speaker';
+import React, { Component } from "react";
+import { View, Text, StyleSheet } from "react-native";
+import Speaker from "../../../common/components/Speaker";
 
 class TestQuestionModule extends Component {
   render() {
-    const {question} = this.props;
-    return(
+    const { question } = this.props;
+    return (
       <View style={questionStyle.view}>
         <View style={questionStyle.questionView}>
           <Speaker toSpeech={question} lang="en" />
@@ -22,16 +17,16 @@ class TestQuestionModule extends Component {
 }
 const questionStyle = StyleSheet.create({
   view: {
-    flex: 1,
+    flex: 1
   },
   questionView: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
+    justifyContent: "center",
+    alignItems: "center"
   },
   text: {
     fontSize: 24,
-    textAlign: 'center'
+    textAlign: "center"
   }
 });
 

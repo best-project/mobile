@@ -1,61 +1,42 @@
-import React, { Component } from 'react'
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import { View, StyleSheet, Text, Image } from "react-native";
+import { Rating } from "react-native-elements";
+import congrats from "../icons/congratulations.png";
+import ConfettiComponent from "../components/Confetti.component";
+import { userSetBestResult } from "../../actions/ProfileActions";
 
-import {
-  View,
-  StyleSheet,
-  Text,
-  Image
-} from 'react-native';
+const CourseCompletedModule = props => {
+  useEffect(() => {
+    props.userSetBestResult(props.id, props.points);
+  }, []);
 
-import { Rating } from 'react-native-elements';
-
-import congrats from '../icons/congratulations.png';
-import ConfettiComponent from '../components/Confetti.component';
-
-class CourseCompletedModule extends Component {
-
-  render() {
-    const {mistakes, name} = this.props;
-
-    return (
-      <View style={courseEndedModuleStyle.view}>
-        <ConfettiComponent />
-        <View style={courseEndedModuleStyle.congratulationsImageView}>
-          <Image 
-            style={courseEndedModuleStyle.image}
-            source={congrats}
-          />
-        </View>
-        <View style={courseEndedModuleStyle.congratulationsHeaderView}>
-          <Text style={courseEndedModuleStyle.headerText}>
-            Congratulations!
-          </Text>
-          <Text style={courseEndedModuleStyle.subHeaderText}>
-            You have completed test {name}
-          </Text>
-        </View>
-        <View style={courseEndedModuleStyle.statisticsView}>
-          <Rating 
-            type='star'
-            ratingCount={5}
-            startingValue={5}
-            imageSize={30}
-            readonly
-          />
-        </View>
+  return (
+    <View style={courseEndedModuleStyle.view}>
+      <ConfettiComponent />
+      <View style={courseEndedModuleStyle.congratulationsImageView}>
+        <Image style={courseEndedModuleStyle.image} source={congrats} />
       </View>
-    )
-  }
-}
+      <View style={courseEndedModuleStyle.congratulationsHeaderView}>
+        <Text style={courseEndedModuleStyle.headerText}>Congratulations!</Text>
+        <Text style={courseEndedModuleStyle.subHeaderText}>You have completed test {props.name}</Text>
+      </View>
+      <View style={courseEndedModuleStyle.statisticsView}>
+        <Text>{`${props.points}/${props.maxPoints} points earned`}</Text>
+        <Rating type="star" ratingCount={5} startingValue={(props.points / props.maxPoints) * 5} imageSize={30} readonly />
+      </View>
+    </View>
+  );
+};
 
 const courseEndedModuleStyle = StyleSheet.create({
   view: {
-    flex: 1,
+    flex: 1
   },
   congratulationsImageView: {
     flex: 2,
-    alignItems: 'center',
-    justifyContent: 'center'
+    alignItems: "center",
+    justifyContent: "center"
   },
   image: {
     width: 300,
@@ -63,12 +44,12 @@ const courseEndedModuleStyle = StyleSheet.create({
   },
   congratulationsHeaderView: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
+    justifyContent: "center",
+    alignItems: "center"
   },
   headerText: {
     fontSize: 30,
-    paddingVertical: 10,
+    paddingVertical: 10
   },
   subHeaderText: {
     fontSize: 14,
@@ -76,13 +57,18 @@ const courseEndedModuleStyle = StyleSheet.create({
   },
   statisticsView: {
     flex: 2,
-    justifyContent: 'center',
-    alignItems: 'center'
+    justifyContent: "center",
+    alignItems: "center"
   },
   statisticsViewInner: {
     flex: 1,
-    textAlign: 'center'
+    textAlign: "center"
   }
 });
 
-export default CourseCompletedModule;
+const mapStateToProps = state => ({
+  Profile: state.Profile
+});
+
+export default connect(mapStateToProps,
+{ userSetBestResult })(CourseCompletedModule);

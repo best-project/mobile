@@ -1,6 +1,8 @@
 // randomize elements of arra
-export const shuffleArray = (array) => {
-  let currentIndex = array.length, temporaryValue, randomIndex;
+export const shuffleArray = array => {
+  let currentIndex = array.length,
+    temporaryValue,
+    randomIndex;
   while (0 !== currentIndex) {
     randomIndex = Math.floor(Math.random() * currentIndex);
     currentIndex -= 1;
@@ -9,14 +11,14 @@ export const shuffleArray = (array) => {
     array[randomIndex] = temporaryValue;
   }
   return array;
-}
+};
 
 // add random indexes to answers list
 export const mixDifferentAnswersIndexes = (maxValue, without, amount) => {
   let array = [];
-  for(let i = 0; i < amount - 1; i++) {
+  for (let i = 0; i < amount - 1; i++) {
     let item = Math.floor(Math.random() * maxValue);
-    while(array.includes(item) || item === without) {
+    while (array.includes(item) || item === without) {
       item = Math.floor(Math.random() * maxValue);
     }
     array.push(item);
@@ -25,4 +27,4 @@ export const mixDifferentAnswersIndexes = (maxValue, without, amount) => {
 
   array = shuffleArray(array);
   return array;
-}
+};

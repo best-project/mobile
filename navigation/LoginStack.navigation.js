@@ -1,26 +1,24 @@
-import LoginScreen from '../src/screens/Login/LoginScreen';
-import RegisterScreen from '../src/screens/Login/RegisterScreen';
-
-import { createStackNavigator } from 'react-navigation';
-
+import LoginScreen from "../src/screens/Login/LoginScreen";
+import RegisterScreen from "../src/screens/Login/RegisterScreen";
+import { createStackNavigator } from "react-navigation";
 
 const LoginStackNavigation = createStackNavigator({
   Login: {
     screen: LoginScreen,
-    navigationOptions:() => {
+    navigationOptions: () => {
       return {
-        header: null,
-      }
+        header: null
+      };
     }
   },
   Register: {
     screen: RegisterScreen,
-    navigationOptions:() => {
+    navigationOptions: () => {
       return {
-        header: null,
-      }
+        header: null
+      };
     }
   }
-})
+});
 
 export default LoginStackNavigation;

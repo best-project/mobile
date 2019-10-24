@@ -1,29 +1,19 @@
-import React, { Component } from 'react';
-
-import {
-  View,
-  StyleSheet,
-} from 'react-native';
-
-import {
-  Button,
-} from 'react-native-elements';
-
-import LoginFormInput from '../../modules/common/LoginFormInput.component';
-
+import React, { Component } from "react";
+import { View, StyleSheet } from "react-native";
+import { Button } from "react-native-elements";
+import LoginFormInput from "../../components/LoginFormInput.component";
 
 class RegisterFormComponent extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
-      login: '',
-      password: '',
-      confirmPassword: '',
-      email: '',
+      login: "",
+      password: "",
+      confirmPassword: "",
+      email: "",
       isLoading: false,
       errors: []
-    }
+    };
 
     this._onLoginChange = this._onLoginChange.bind(this);
     this._onEmailChange = this._onEmailChange.bind(this);
@@ -31,8 +21,6 @@ class RegisterFormComponent extends Component {
     this._onConfirmPasswordChange = this._onConfirmPasswordChange.bind(this);
     this._onSubmit = this._onSubmit.bind(this);
   }
-
-  
 
   _onLoginChange(text) {
     this.setState({
@@ -64,37 +52,15 @@ class RegisterFormComponent extends Component {
     });
   }
 
-  checkValidation() {
-
-  }
+  checkValidation() {}
 
   render() {
-    const {login, email, password, confirmPassword, isLoading} = this.state;
-    console.log(this.props)
-    return(
+    const { login, email, password, confirmPassword, isLoading } = this.state;
+    return (
       <View style={registerFormStyle.view}>
-        <LoginFormInput 
-          type="Login"
-          iconName="user"
-          value={login}
-          onChange={this._onLoginChange}
-          onBlur={() => {}}
-        />
-        <LoginFormInput 
-          type="Email"
-          iconName="envelope"
-          value={email}
-          onChange={this._onEmailChange}
-          onBlur={() => {}}
-        />
-        <LoginFormInput
-          type="Password"
-          iconName="lock"
-          value={password}
-          onChange={this._onPasswordChange}
-          secure={true}
-          onBlur={() => {}}
-        />
+        <LoginFormInput type="Login" iconName="user" value={login} onChange={this._onLoginChange} onBlur={() => {}} />
+        <LoginFormInput type="Email" iconName="envelope" value={email} onChange={this._onEmailChange} onBlur={() => {}} />
+        <LoginFormInput type="Password" iconName="lock" value={password} onChange={this._onPasswordChange} secure={true} onBlur={() => {}} />
         <LoginFormInput
           type="Confirm password"
           iconName="lock"
@@ -103,12 +69,7 @@ class RegisterFormComponent extends Component {
           secure={true}
           onBlur={() => {}}
         />
-        <Button 
-          title="Register"
-          loading={isLoading ? true : false}
-          containerStyle={registerFormStyle.submitButton}
-          onPress={this._onSubmit}
-        />
+        <Button title="Register" loading={isLoading ? true : false} containerStyle={registerFormStyle.submitButton} onPress={this._onSubmit} />
       </View>
     );
   }
@@ -116,14 +77,14 @@ class RegisterFormComponent extends Component {
 const registerFormStyle = StyleSheet.create({
   view: {
     flex: 2,
-    alignItems: 'center',
+    alignItems: "center",
     paddingTop: 15,
-    width: 90 + '%'
+    width: 90 + "%"
   },
   submitButton: {
     marginTop: 10,
-    width: 100 + '%'
-  },
-})
+    width: 100 + "%"
+  }
+});
 
 export default RegisterFormComponent;

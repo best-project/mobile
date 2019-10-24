@@ -4,7 +4,7 @@ import React, {Component} from 'react';
 import ProfileScreen from './src/screens/ProfileScreen/ProfileScreen';
 import CreateCourse from './src/screens/CreateCourseScreen/CreateCourseScreen';
 import Dashboard from './src/screens/DashBoardScreen/modules/DashboardScreen';
-import TestScreen from './src/screens/TestScreen/TestScreen';
+import StandardTestScreen from './src/screens/StandardTestScreen/StandardTestScreen';
 import PuzzleTestScreen from './src/screens/PuzzleTestScreen/PuzzleTestScreen';
 
 import { Icon } from 'react-native-elements';
@@ -30,7 +30,6 @@ import HomeStackNavigation from './navigation/HomeStack.navigation';
 import LoginStackNavigation from './navigation/LoginStack.navigation';
 import ProfileStackNavigation from './navigation/ProfileStack.navigation';
 import SettingsStackNavigation from './navigation/SettingsStack.navigation';
-import CourseManagerScreen from './src/screens/CourseManagerScreen/CourseManagerScreen';
 
 //BOTTOM-NAVIGATION
 const DashboardTabNavigator = createBottomTabNavigator({
@@ -95,7 +94,7 @@ const AppSwitchNavigator = createSwitchNavigator({
   Dashboard: {screen: Dashboard},
   Settings: {screen: SettingsStackNavigation},
   CreateCourse: {screen: CreateCourse},
-  Test: {screen: TestScreen},
+  Test: {screen: StandardTestScreen},
   PuzzleTest: {screen: PuzzleTestScreen}
 },);
 
@@ -115,6 +114,8 @@ class App extends Component {
       'brandon-grotesque-regular': require('./assets/fonts/brandon-grotesque-regular.ttf')
     })
     this.setState({fontLoading: false})
+
+    
   }
   render() {
     if(this.state.fontLoading) {
@@ -122,7 +123,7 @@ class App extends Component {
     } else {
       return (
         <Provider store={store}>
-          <AppContainer />
+          <AppContainer/>
         </Provider>
       );
     }

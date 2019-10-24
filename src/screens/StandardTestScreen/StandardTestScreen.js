@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { View, StyleSheet } from "react-native";
 import ProgressBar from "../../common/components/ProgressBar";
-import PuzzleTestQuestionModule from "./modules/PuzzleTestQuestion.module";
-import PuzzleTestAnswersListModule from "./modules/PuzzleTestAnswer.module";
+import TestQuestionModule from "./modules/TestQuestion.module";
+import AnswersListModule from "./modules/AnswersList.module";
 import CourseCompletedModule from "../../common/modules/CourseCompleted.module";
 import { shuffleArray } from "../../common/services/helpers";
 
-const PuzzleTestScreen = props => {
+const StandardTestScreen = props => {
   const [progressLevel, setProgressLevel] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [course, setCourse] = useState();
@@ -16,6 +16,10 @@ const PuzzleTestScreen = props => {
   const [points, setPoints] = useState(0);
 
   const showEndScreen = progressLevel > 100;
+
+  useEffect(() => {
+    console.log(points);
+  }, [points]);
 
   useEffect(() => {
     if (course) {
@@ -38,8 +42,9 @@ const PuzzleTestScreen = props => {
     setQuestionsList(questions);
   }
 
-  function nextQuestion() {
+  function onAnswerPress() {
     const progressLevel = Math.floor(((currentQuestion + 1) / (totalAmount - 1)) * 100);
+
     if (currentQuestion <= totalAmount) {
       setProgressLevel(progressLevel);
       setCurrentQuestion(currentQuestion + 1);
@@ -50,33 +55,32 @@ const PuzzleTestScreen = props => {
     setPoints(points + addPoints);
   }
 
+  if (!course) {
+    return null;
+  }
+
   if (showEndScreen) {
     return <CourseCompletedModule name={course.name} points={points} maxPoints={course.maxPoints} id={props.navigation.getParam("id")} />;
   }
 
   return (
-    <View style={puzzleTestStyle.view}>
+    <View style={testStyle.view}>
       <ProgressBar progressLevel={progressLevel} />
       {!!questionsList.length && questionsList[0] && (
         <>
-          <PuzzleTestQuestionModule question={questionsList[currentQuestion].translate} />
-          <PuzzleTestAnswersListModule
-            validAnswer={questionsList[currentQuestion].word}
-            currentQuestion={currentQuestion}
-            onValidAnswer={nextQuestion}
-            addPoints={addPoints}
-          />
+          <TestQuestionModule question={questionsList[currentQuestion].word} />
+          <AnswersListModule data={questionsList} currentQuestion={currentQuestion} onAnswerPress={onAnswerPress} addPoints={addPoints} />
         </>
       )}
     </View>
   );
 };
 
-PuzzleTestScreen.navigationOptions = ({ navigation }) => ({
+StandardTestScreen.navigationOptions = ({ navigation }) => ({
   title: navigation.getParam("title", "Test")
 });
 
-const puzzleTestStyle = StyleSheet.create({
+const testStyle = StyleSheet.create({
   view: {
     flex: 1
   }
@@ -89,4 +93,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   {}
-)(PuzzleTestScreen);
+)(StandardTestScreen);
