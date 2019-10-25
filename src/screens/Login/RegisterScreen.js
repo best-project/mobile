@@ -1,5 +1,10 @@
 import React, { Component } from "react";
-import { View, StyleSheet, KeyboardAvoidingView, ScrollView } from "react-native";
+import {
+  View,
+  StyleSheet,
+  KeyboardAvoidingView,
+  ScrollView
+} from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import RegisterFormComponent from "./modules/register/RegisterForm.component";
 import globalStyles from "../../common/style/global.style";
@@ -10,18 +15,24 @@ class RegisterScreen extends Component {
     super(props);
   }
 
-  onKeyboardDidShow() {
-    console.log("did show");
-  }
-
   render() {
     return (
-      <KeyboardAvoidingView style={registerStyle.view} behavior="height" enabled>
+      <KeyboardAvoidingView
+        style={registerStyle.view}
+        behavior="height"
+        enabled
+      >
         <ScrollView contentContainerStyle={{ flexGrow: 1 }} bounces={false}>
-          <LinearGradient colors={[globalStyles.colors.primaryBlue, globalStyles.colors.secondaryBlue]} style={registerStyle.linearGradient}>
+          <LinearGradient
+            colors={[
+              globalStyles.colors.primaryBlue,
+              globalStyles.colors.secondaryBlue
+            ]}
+            style={registerStyle.linearGradient}
+          >
             <View style={registerStyle.viewContainer}>
               <BrandLogoComponent />
-              <RegisterFormComponent />
+              <RegisterFormComponent navigation={this.props.navigation} />
             </View>
           </LinearGradient>
         </ScrollView>

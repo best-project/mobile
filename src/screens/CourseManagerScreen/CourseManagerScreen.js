@@ -31,16 +31,16 @@ const CourseManagerScreen = props => {
   function goLearn() {
     const routeParams = {
       id: props.navigation.getParam("id"),
-      title: "Learn " + props.navigation.getParam("title")
+      title: props.navigation.getParam("title")
     };
 
-    props.navigation.navigate("LearnStandard", routeParams);
+    props.navigation.navigate("StandardLearn", routeParams);
   }
 
   function goTest() {
     const routeParams = {
       id: props.navigation.getParam("id"),
-      title: "Test " + props.navigation.getParam("title")
+      title: props.navigation.getParam("title")
     };
 
     if (course.type === "puzzle") {
@@ -56,7 +56,10 @@ const CourseManagerScreen = props => {
     <View style={courseManagerStyle.view}>
       {!!course && userCourse && (
         <>
-          <ImageBackground source={{ uri: course.image }} style={courseManagerStyle.background}>
+          <ImageBackground
+            source={{ uri: course.image }}
+            style={courseManagerStyle.background}
+          >
             <View style={courseManagerStyle.userCourseStatisticsView}>
               <View style={courseManagerStyle.bestPointsView}>
                 <AnimatedCircularProgress
@@ -68,19 +71,38 @@ const CourseManagerScreen = props => {
                   arcSweepAngle={180}
                   rotation={-90}
                 >
-                  {() => <Text style={courseManagerStyle.bestPointsText}>{userCourse.points}</Text>}
+                  {() => (
+                    <Text style={courseManagerStyle.bestPointsText}>
+                      {userCourse.points}
+                    </Text>
+                  )}
                 </AnimatedCircularProgress>
-                <Text style={courseManagerStyle.bestPointsTitleText}>Best Points</Text>
+                <Text style={courseManagerStyle.bestPointsTitleText}>
+                  Best Points
+                </Text>
               </View>
               <View style={courseManagerStyle.bestPointsView}>
-                <Text style={courseManagerStyle.statisticText}>{"Passed: " + userCourse.passed}</Text>
+                <Text style={courseManagerStyle.statisticText}>
+                  {"Passed: " + userCourse.passed}
+                </Text>
               </View>
             </View>
           </ImageBackground>
           <View style={courseManagerStyle.managePanelView}>
-            <CourseManagerActionIconButtonComponent icon="leanpub" title="Learn" onClick={goLearn} />
-            <CourseManagerActionIconButtonComponent icon="edit" title="Test" onClick={goTest} />
-            <CourseManagerActionIconButtonComponent icon="leanpub" title="Arcade" />
+            <CourseManagerActionIconButtonComponent
+              icon="leanpub"
+              title="Learn"
+              onClick={goLearn}
+            />
+            <CourseManagerActionIconButtonComponent
+              icon="edit"
+              title="Test"
+              onClick={goTest}
+            />
+            <CourseManagerActionIconButtonComponent
+              icon="leanpub"
+              title="Arcade"
+            />
           </View>
         </>
       )}
@@ -89,7 +111,7 @@ const CourseManagerScreen = props => {
 };
 
 CourseManagerScreen.navigationOptions = ({ navigation }) => ({
-  title: navigation.getParam("title", "Course")
+  title: `Course ${navigation.getParam("title")}`
 });
 
 const courseManagerStyle = StyleSheet.create({

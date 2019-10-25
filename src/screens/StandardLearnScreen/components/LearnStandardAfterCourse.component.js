@@ -9,8 +9,21 @@ const LearnStandardAfterCourseComponent = props => {
       <Text style={afterCourseStyle.titleText}>{props.name}</Text>
       <Text style={afterCourseStyle.bottomText}>came to the end.</Text>
       <View style={afterCourseStyle.buttons}>
-        <Button title="Go again" containerStyle={afterCourseStyle.button} onPress={props.onGoAgain} />
-        <Button title="Go to test" containerStyle={afterCourseStyle.button} onPress={props.onGoTest} />
+        <Button
+          title="Again"
+          containerStyle={afterCourseStyle.button}
+          onPress={props.goAgain}
+        />
+        <Button
+          title="Go to test"
+          containerStyle={afterCourseStyle.button}
+          onPress={props.goTest}
+        />
+        <Button
+          title="Back to manager"
+          containerStyle={afterCourseStyle.button}
+          onPress={props.backToManager}
+        />
       </View>
     </View>
   );
@@ -26,7 +39,7 @@ const afterCourseStyle = StyleSheet.create({
   buttons: {
     flexDirection: "row",
     marginTop: 30,
-    justifyContent: "space-around"
+    justifyContent: "space-between"
   },
   button: {
     marginHorizontal: 10

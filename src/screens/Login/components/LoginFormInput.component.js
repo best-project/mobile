@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { View, StyleSheet, TextInput, Text } from "react-native";
 import { Icon } from "react-native-elements";
+import globalStyles from "../../../common/style/global.style";
 
 class LoginFormInputComponent extends Component {
   constructor(props) {
@@ -28,21 +29,41 @@ class LoginFormInputComponent extends Component {
 
   render() {
     const { isFocused } = this.state;
-    const { type, iconName, value, secure, errorMessage } = this.props;
+    const {
+      type,
+      iconName,
+      value,
+      secure,
+      errorMessage,
+      keyboardType
+    } = this.props;
     return (
       <>
-        <View style={[loginFormInputStyle.view, isFocused && loginFormInputStyle.viewFocused, errorMessage && loginFormInputStyle.viewError]}>
-          <Icon name={iconName} type="font-awesome" color="#fff" containerStyle={loginFormInputStyle.icon} />
+        <View
+          style={[
+            loginFormInputStyle.view,
+            isFocused && loginFormInputStyle.viewFocused,
+            errorMessage && loginFormInputStyle.viewError
+          ]}
+        >
+          <Icon
+            name={iconName}
+            type="font-awesome"
+            color="#fff"
+            containerStyle={loginFormInputStyle.icon}
+          />
           <TextInput
             placeholder={type}
             placeholderTextColor="#fff"
-            maxLength={40}
+            maxLength={25}
             style={loginFormInputStyle.input}
             onFocus={this._onFocus}
             onBlur={this._onBlur}
             secureTextEntry={secure ? true : false}
             value={value}
-            onChangeText={text => this.props.onChange(text)}
+            onChangeText={value => this.props.onChange(value)}
+            autoCorrect={false}
+            keyboardType={keyboardType && keyboardType}
           />
         </View>
         <View style={loginFormInputStyle.errorView}>
@@ -65,10 +86,10 @@ const loginFormInputStyle = StyleSheet.create({
     marginBottom: 5
   },
   viewFocused: {
-    borderBottomColor: "#62efff"
+    borderBottomColor: globalStyles.colors.darkBlue
   },
   viewError: {
-    borderBottomColor: "#d32707"
+    borderBottomColor: globalStyles.colors.error
   },
   icon: {
     padding: 0,
@@ -87,7 +108,7 @@ const loginFormInputStyle = StyleSheet.create({
     paddingLeft: 5
   },
   errorText: {
-    color: "red"
+    color: globalStyles.colors.error
   }
 });
 

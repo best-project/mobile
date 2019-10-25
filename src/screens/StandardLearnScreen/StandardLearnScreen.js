@@ -7,7 +7,7 @@ import LearnStandardQuestionComponent from "./components/LearnStandardQuestion.c
 import LearnStandardNextButtonComponent from "./components/LearnStardardNextButton.component";
 import { shuffleArray } from "../../common/services/helpers";
 
-const LearnStandardScreen = props => {
+const StandardLearnScreen = props => {
   const [progressLevel, setProgressLevel] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [course, setCourse] = useState();
@@ -33,7 +33,9 @@ const LearnStandardScreen = props => {
   }
 
   function nextButtonPress() {
-    const progressLevel = Math.floor(((currentQuestion + 1) / (totalAmount - 1)) * 100);
+    const progressLevel = Math.floor(
+      ((currentQuestion + 1) / (totalAmount - 1)) * 100
+    );
     if (currentQuestion <= totalAmount) {
       setProgressLevel(progressLevel);
       setCurrentQuestion(currentQuestion + 1);
@@ -46,17 +48,44 @@ const LearnStandardScreen = props => {
   }
 
   function restart() {
+    console.log("restart");
     setNewQuestionsList();
     setProgressLevel(0);
     setCurrentQuestion(0);
   }
 
   function goTest() {
-    console.log("go to test");
+    const routeParams = {
+      id: props.navigation.getParam("id"),
+      title: props.navigation.getParam("title")
+    };
+
+    if (course.type === "puzzle") {
+      props.navigation.navigate("PuzzleTest", routeParams);
+    }
+
+    if (course.type === "standard") {
+      props.navigation.navigate("StandardTest", routeParams);
+    }
+  }
+
+  function goManager() {
+    props.navigation.goBack();
+  }
+
+  if (!course) {
+    return null;
   }
 
   if (showEndScreen) {
-    return <LearnStandardAfterCourseComponent onGoAgain={restart} onGoTest={goTest} name={course.name} />;
+    return (
+      <LearnStandardAfterCourseComponent
+        goAgain={restart}
+        goTest={goTest}
+        backToManager={goManager}
+        name={course.name}
+      />
+    );
   }
 
   return (
@@ -65,7 +94,9 @@ const LearnStandardScreen = props => {
         <ProgressBar progressLevel={progressLevel} />
         {!!questionsList.length && questionsList[0] && (
           <>
-            <LearnStandardQuestionComponent data={questionsList[currentQuestion]} />
+            <LearnStandardQuestionComponent
+              data={questionsList[currentQuestion]}
+            />
             <LearnStandardNextButtonComponent onPress={nextButtonPress} />
           </>
         )}
@@ -74,8 +105,8 @@ const LearnStandardScreen = props => {
   );
 };
 
-LearnStandardScreen.navigationOptions = ({ navigation }) => ({
-  title: navigation.getParam("title", "Learn")
+StandardLearnScreen.navigationOptions = ({ navigation }) => ({
+  title: `Learn ${navigation.getParam("title")}`
 });
 
 const learnScreenStyles = StyleSheet.create({
@@ -91,4 +122,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   {}
-)(LearnStandardScreen);
+)(StandardLearnScreen);

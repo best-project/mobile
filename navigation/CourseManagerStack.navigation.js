@@ -2,7 +2,7 @@ import React from "react";
 import { createStackNavigator } from "react-navigation";
 import HeaderActionButtonComponent from "./common/components/HeaderActionButton.component";
 import { headerStyle, headerTitleStyle } from "./common/config.style";
-import LearnStandardScreen from "../src/screens/LearnScreen/LearnStandardScreen";
+import StandardLearnScreen from "../src/screens/StandardLearnScreen/StandardLearnScreen";
 import CourseManagerScreen from "../src/screens/CourseManagerScreen/CourseManagerScreen";
 import StandardTestScreen from "../src/screens/StandardTestScreen/StandardTestScreen";
 import PuzzleTestScreen from "../src/screens/PuzzleTestScreen/PuzzleTestScreen";
@@ -26,8 +26,8 @@ const CourseManagerStackNavigation = createStackNavigator({
       };
     }
   },
-  LearnStandard: {
-    screen: LearnStandardScreen,
+  StandardLearn: {
+    screen: StandardLearnScreen,
     navigationOptions: ({ navigation }) => {
       return {
         headerLeft: (

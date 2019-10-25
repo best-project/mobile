@@ -5,10 +5,12 @@ import MyCoursesListComponent from "./components/MyCoursesList.component";
 
 const HomeScreen = props => {
   const { coursesList } = props.Courses;
-  console.log(coursesList.length);
   return (
     <View style={homeStyle.view}>
-      <MyCoursesListComponent coursesList={coursesList} navigation={props.navigation} />
+      <MyCoursesListComponent
+        coursesList={coursesList}
+        navigation={props.navigation}
+      />
     </View>
   );
 };

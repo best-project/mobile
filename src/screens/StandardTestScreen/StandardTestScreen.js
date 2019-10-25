@@ -43,7 +43,9 @@ const StandardTestScreen = props => {
   }
 
   function onAnswerPress() {
-    const progressLevel = Math.floor(((currentQuestion + 1) / (totalAmount - 1)) * 100);
+    const progressLevel = Math.floor(
+      ((currentQuestion + 1) / (totalAmount - 1)) * 100
+    );
 
     if (currentQuestion <= totalAmount) {
       setProgressLevel(progressLevel);
@@ -60,7 +62,14 @@ const StandardTestScreen = props => {
   }
 
   if (showEndScreen) {
-    return <CourseCompletedModule name={course.name} points={points} maxPoints={course.maxPoints} id={props.navigation.getParam("id")} />;
+    return (
+      <CourseCompletedModule
+        name={course.name}
+        points={points}
+        maxPoints={course.maxPoints}
+        id={props.navigation.getParam("id")}
+      />
+    );
   }
 
   return (
@@ -69,7 +78,12 @@ const StandardTestScreen = props => {
       {!!questionsList.length && questionsList[0] && (
         <>
           <TestQuestionModule question={questionsList[currentQuestion].word} />
-          <AnswersListModule data={questionsList} currentQuestion={currentQuestion} onAnswerPress={onAnswerPress} addPoints={addPoints} />
+          <AnswersListModule
+            data={questionsList}
+            currentQuestion={currentQuestion}
+            onAnswerPress={onAnswerPress}
+            addPoints={addPoints}
+          />
         </>
       )}
     </View>
@@ -77,7 +91,7 @@ const StandardTestScreen = props => {
 };
 
 StandardTestScreen.navigationOptions = ({ navigation }) => ({
-  title: navigation.getParam("title", "Test")
+  title: `Test ${navigation.getParam("title")}`
 });
 
 const testStyle = StyleSheet.create({

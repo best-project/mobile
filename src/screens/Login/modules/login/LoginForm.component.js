@@ -1,98 +1,109 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { Button } from "react-native-elements";
 import LoginFormInputComponent from "../../components/LoginFormInput.component";
+import validationHelpers from "../../../../common/services/validation.helpers";
 
-class LoginFormComponent extends Component {
-  constructor(props) {
-    super(props);
+const LoginFormComponent = props => {
+  const [login, setLogin] = useState("");
+  const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [errors, setErrors] = useState({
+    login: "",
+    password: ""
+  });
 
-    this.state = {
-      login: "",
-      password: "",
-      isLoading: false,
-      errors: {
-        login: "",
-        password: ""
-      }
-    };
+  const isFormValid = !(errors.login || errors.password);
 
-    this._onLoginChange = this._onLoginChange.bind(this);
-    this._onPasswordChange = this._onPasswordChange.bind(this);
-    this._onSubmit = this._onSubmit.bind(this);
-  }
-  _onLoginChange(text) {
-    this.setState({
-      login: text
+  function onLoginChange(value) {
+    setErrors({
+      ...errors,
+      login: ""
     });
+    setLogin(value);
   }
 
-  _onLoginBlur() {
-    console.log("login blur");
+  function loginValidate() {
+    if (validationHelpers.validateLoginLength) {
+      setErrors({
+        ...errors,
+        login: "Login is too short."
+      });
+    }
   }
 
-  _onPasswordBlur() {
-    console.log("passwd blur");
-  }
-
-  _onPasswordChange(text) {
-    this.setState({
-      password: text
+  function onPasswordChange(value) {
+    setErrors({
+      ...errors,
+      password: ""
     });
+    setPassword(value);
   }
 
-  _onSubmit() {
-    this.setState({
-      isLoading: true
-    });
-
-    this.props.navigation.navigate("Home");
-
-    // api call
+  function passwordValidate() {
+    if (validationHelpers.validatePasswordLength(password)) {
+      setErrors({
+        ...errors,
+        password: "Password is too short."
+      });
+    }
   }
 
-  _onForgot() {
+  function onSubmit() {
+    loginValidate();
+    passwordValidate();
+    if (isFormValid) {
+      setIsLoading(true);
+      const request = {};
+      props.navigation.navigate("Home");
+      // api call
+    }
+  }
+
+  function onForgot() {
     console.log("forgot");
   }
 
-  _onNewAccount() {
-    this.props.navigation.navigate("Register");
+  function onNewAccount() {
+    props.navigation.navigate("Register");
   }
 
-  render() {
-    const { login, password, isLoading, errors } = this.state;
-    return (
-      <View style={loginFormStyle.view}>
-        <LoginFormInputComponent
-          type="Login"
-          iconName="user"
-          value={login}
-          onChange={this._onLoginChange}
-          onBlur={this._onLoginBlur}
-          errorMessage={errors.login}
-        />
-        <LoginFormInputComponent
-          type="Password"
-          iconName="lock"
-          value={password}
-          onChange={this._onPasswordChange}
-          onBlur={this._onPasswordBlur}
-          secure={true}
-          errorMessage={errors.password}
-        />
-        <Button title="Login" loading={isLoading} containerStyle={loginFormStyle.submitButton} onPress={this._onSubmit} />
-        <View style={loginFormStyle.options}>
-          <TouchableOpacity onPress={this._onForgot} activeOpacity={0.7}>
-            <Text style={loginFormStyle.optionText}>Forgot password?</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => this._onNewAccount()} activeOpacity={0.7}>
-            <Text style={loginFormStyle.optionText}>New user? Sign up</Text>
-          </TouchableOpacity>
-        </View>
+  return (
+    <View style={loginFormStyle.view}>
+      <LoginFormInputComponent
+        type="Login"
+        iconName="user"
+        value={login}
+        onChange={onLoginChange}
+        onBlur={loginValidate}
+        errorMessage={errors.login}
+      />
+      <LoginFormInputComponent
+        type="Password"
+        iconName="lock"
+        value={password}
+        onChange={onPasswordChange}
+        onBlur={passwordValidate}
+        secure={true}
+        errorMessage={errors.password}
+      />
+      <Button
+        title="Login"
+        loading={isLoading}
+        containerStyle={loginFormStyle.submitButton}
+        onPress={onSubmit}
+      />
+      <View style={loginFormStyle.options}>
+        <TouchableOpacity onPress={onForgot} activeOpacity={0.7}>
+          <Text style={loginFormStyle.optionText}>Forgot password?</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={onNewAccount} activeOpacity={0.7}>
+          <Text style={loginFormStyle.optionText}>New user? Sign up</Text>
+        </TouchableOpacity>
       </View>
-    );
-  }
-}
+    </View>
+  );
+};
 
 const loginFormStyle = StyleSheet.create({
   view: {

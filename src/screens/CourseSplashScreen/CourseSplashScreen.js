@@ -19,7 +19,7 @@ class CourseSplashScreen extends Component {
   startButtonClick() {
     this.props.navigation.navigate("CourseManager", {
       id: this.props.navigation.getParam("id"),
-      title: "Kurs " + this.props.navigation.getParam("title")
+      title: this.props.navigation.getParam("title")
     });
   }
 
