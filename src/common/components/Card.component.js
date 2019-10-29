@@ -1,17 +1,41 @@
 import React from "react";
-import { View, StyleSheet, Text, ImageBackground, TouchableOpacity } from "react-native";
+import {
+  View,
+  StyleSheet,
+  Text,
+  ImageBackground,
+  TouchableOpacity
+} from "react-native";
 import { Rating } from "react-native-ratings";
+import globalStyles from "../style/global.style";
 
 const CardComponent = props => {
   return (
-    <View style={[portletCardStyle.view, { backgroundColor: props.backgroundColor, minHeight: props.height }]}>
+    <View
+      style={[
+        portletCardStyle.view,
+        globalStyles.shadows.strong,
+        { backgroundColor: props.backgroundColor, minHeight: props.height }
+      ]}
+    >
       <TouchableOpacity onPress={props.onClick} activeOpacity={0.7}>
-        <ImageBackground source={{ uri: props.image }} style={portletCardStyle.imageView} imageStyle={{ opacity: 0.9 }}></ImageBackground>
+        <ImageBackground
+          source={{ uri: props.image }}
+          style={portletCardStyle.imageView}
+          imageStyle={{ opacity: 0.9 }}
+        ></ImageBackground>
         <View style={portletCardStyle.contentView}>
           <Text style={portletCardStyle.titleText}>{props.title}</Text>
-          <Text style={portletCardStyle.descriptionText}>{props.description}</Text>
+          <Text style={portletCardStyle.descriptionText}>
+            {props.description}
+          </Text>
           <View style={portletCardStyle.rateView}>
-            <Rating imageSize={18} readonly startingValue={props.rate} style={portletCardStyle.rating} />
+            <Rating
+              imageSize={18}
+              readonly
+              startingValue={props.rate}
+              style={portletCardStyle.rating}
+            />
             <Text style={portletCardStyle.rateText}>{props.rate}</Text>
           </View>
         </View>
@@ -33,14 +57,6 @@ const portletCardStyle = StyleSheet.create({
     borderColor: "#fff",
     borderWidth: 5,
     borderStyle: "solid",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2
-    },
-    shadowOpacity: 0.15,
-    shadowRadius: 3.84,
-    elevation: 5,
     marginVertical: 10
   },
   imageView: {

@@ -100,8 +100,8 @@ const CourseManagerScreen = props => {
               onClick={goTest}
             />
             <CourseManagerActionIconButtonComponent
-              icon="leanpub"
-              title="Arcade"
+              icon="hourglass-start"
+              title="Time test"
             />
           </View>
         </>

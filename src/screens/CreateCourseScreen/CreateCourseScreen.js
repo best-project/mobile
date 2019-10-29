@@ -58,9 +58,11 @@ class CourseImageSelector extends Component {
     this.setState({
       isLoading: true
     });
-    FileSystem.downloadAsync(url, FileSystem.documentDirectory + shorthash.unique(url))
+    FileSystem.downloadAsync(
+      url,
+      FileSystem.documentDirectory + shorthash.unique(url)
+    )
       .then(response => {
-        console.log(response.uri);
         this.setState({
           isLoading: false,
           currentImage: response.uri
@@ -75,16 +77,26 @@ class CourseImageSelector extends Component {
     const { selectedId, imageSuggestions } = this.state;
     switch (direction) {
       case "left":
-        return selectedId > 0 ? this.setState({ selectedId: selectedId - 1 }) : null;
+        return selectedId > 0
+          ? this.setState({ selectedId: selectedId - 1 })
+          : null;
       case "right":
-        return selectedId < imageSuggestions.length - 1 ? this.setState({ selectedId: selectedId + 1 }) : null;
+        return selectedId < imageSuggestions.length - 1
+          ? this.setState({ selectedId: selectedId + 1 })
+          : null;
       default:
         return null;
     }
   }
 
   render() {
-    const { imageSuggestions, currentImage, selectedId, clicked, isLoading } = this.state;
+    const {
+      imageSuggestions,
+      currentImage,
+      selectedId,
+      clicked,
+      isLoading
+    } = this.state;
     const { searchPhrase } = this.props;
 
     return (
@@ -92,7 +104,10 @@ class CourseImageSelector extends Component {
         {imageSuggestions.length && searchPhrase ? (
           //if have found images
           <>
-            <ImageBackground source={{ uri: currentImage }} style={imageSelectorStyle.container}>
+            <ImageBackground
+              source={{ uri: currentImage }}
+              style={imageSelectorStyle.container}
+            >
               {isLoading && <OverlayLoader />}
               <IconButtonComponent
                 name="chevron-left"
@@ -110,7 +125,12 @@ class CourseImageSelector extends Component {
               />
             </ImageBackground>
             <View style={imageSelectorStyle.submitButtonView}>
-              <Button title="Next" loading={clicked ? true : false} containerStyle={imageSelectorStyle.submitButton} onPress={this._onSubmit} />
+              <Button
+                title="Next"
+                loading={clicked ? true : false}
+                containerStyle={imageSelectorStyle.submitButton}
+                onPress={this._onSubmit}
+              />
             </View>
           </>
         ) : null}

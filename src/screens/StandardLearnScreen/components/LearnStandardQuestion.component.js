@@ -1,12 +1,17 @@
 import React from "react";
 import { View, Text, StyleSheet, ImageBackground } from "react-native";
 import Speaker from "../../../common/components/Speaker";
+import globalStyles from "../../../common/style/global.style";
 
 const LearnStandardQuestionComponent = props => {
   return (
     <View style={questionStyle.view}>
-      <View style={questionStyle.imageView}>
-        <ImageBackground source={{ uri: props.data.image }} style={questionStyle.imageBackground} imageStyle={questionStyle.imageStyle}>
+      <View style={[questionStyle.imageView, globalStyles.shadows.light]}>
+        <ImageBackground
+          source={{ uri: props.data.image }}
+          style={questionStyle.imageBackground}
+          imageStyle={questionStyle.imageStyle}
+        >
           <View style={[questionStyle.boxView, questionStyle.question]}>
             <Speaker toSpeech={props.data.word} />
             <Text style={questionStyle.text}>{props.data.word}</Text>
@@ -31,8 +36,7 @@ const questionStyle = StyleSheet.create({
     flex: 1,
     width: 95 + "%",
     borderRadius: 10,
-    borderWidth: StyleSheet.hairlineWidth,
-    borderColor: "#2089dc"
+    borderWidth: StyleSheet.hairlineWidth
   },
   imageBackground: {
     width: 100 + "%",
@@ -40,7 +44,7 @@ const questionStyle = StyleSheet.create({
     justifyContent: "flex-end"
   },
   imageStyle: {
-    borderRadius: 5
+    borderRadius: 10
   },
   boxView: {
     justifyContent: "center",
@@ -50,16 +54,19 @@ const questionStyle = StyleSheet.create({
   question: {
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderBottomColor: "#343434",
-    backgroundColor: "rgba(255,255,255, 0.8)"
+    backgroundColor: "rgba(255,255,255, 0.8)",
+    borderTopLeftRadius: 5,
+    borderTopEndRadius: 5
   },
   translate: {
     backgroundColor: "rgba(255,255,255, 0.95)",
-    borderBottomLeftRadius: 5,
-    borderBottomEndRadius: 5
+    borderBottomLeftRadius: 10,
+    borderBottomEndRadius: 10
   },
   text: {
     fontSize: 24,
-    color: "#000"
+    color: "#000",
+    textAlign: "center"
   }
 });
 

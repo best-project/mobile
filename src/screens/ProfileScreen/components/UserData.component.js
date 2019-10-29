@@ -9,7 +9,13 @@ class UserDataComponent extends Component {
     const { nickname, avatar } = this.props;
     return (
       <View style={userDataStyle.view}>
-        <LinearGradient colors={[globalStyles.colors.primaryBlue, globalStyles.colors.secondaryBlue]} style={userDataStyle.linearGradient}>
+        <LinearGradient
+          colors={[
+            globalStyles.colors.primaryBlue,
+            globalStyles.colors.secondaryBlue
+          ]}
+          style={userDataStyle.linearGradient}
+        >
           <View style={userDataStyle.avatarBackground}>
             <Avatar
               rounded

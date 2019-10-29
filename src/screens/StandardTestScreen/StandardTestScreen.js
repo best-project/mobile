@@ -18,10 +18,6 @@ const StandardTestScreen = props => {
   const showEndScreen = progressLevel > 100;
 
   useEffect(() => {
-    console.log(points);
-  }, [points]);
-
-  useEffect(() => {
     if (course) {
       setNewQuestionsList();
       setTotalAmount(course.data.length);

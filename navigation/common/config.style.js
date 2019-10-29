@@ -1,5 +1,7 @@
+import globalStyles from "../../src/common/style/global.style";
+
 export const headerStyle = {
-  backgroundColor: "#2089dc",
+  backgroundColor: globalStyles.colors.primaryBlue,
   elevation: 0
 };
 

@@ -1,13 +1,21 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
 import { TouchableOpacity } from "react-native";
 import { Icon } from "react-native-elements";
 import * as Speech from "expo-speech";
+import globalStyles from "../style/global.style";
 
-class Speaker extends Component {
-  voicePress(value) {
+const Speaker = props => {
+  useEffect(() => {
+    if (props.Settings.isSoundEnabled) {
+      useVoice(props.toSpeech);
+    }
+  }, [props.toSpeech]);
+
+  function useVoice(value) {
     let lang = "en";
-    if (this.props.lang) {
-      lang = this.props.lang;
+    if (props.lang) {
+      lang = props.lang;
     }
     Speech.speak(value, {
       language: lang,
@@ -15,16 +23,32 @@ class Speaker extends Component {
       rate: 1
     });
   }
-  _speakerPress() {
-    this.voicePress(this.props.toSpeech);
-  }
-  render() {
-    return (
-      <TouchableOpacity onPress={() => this._speakerPress()} activeOpacity={0.7}>
-        <Icon name="volume-up" type="font-awesome" color="#1b1b1b" size={30} />
-      </TouchableOpacity>
-    );
-  }
-}
 
-export default Speaker;
+  function speakerPress() {
+    useVoice(props.toSpeech);
+  }
+
+  return (
+    <TouchableOpacity onPress={speakerPress} activeOpacity={0.7}>
+      <Icon
+        name="volume-up"
+        type="font-awesome"
+        color={props.color}
+        size={30}
+      />
+    </TouchableOpacity>
+  );
+};
+
+Speaker.defaultProps = {
+  color: globalStyles.colors.dark
+};
+
+const mapStateToProps = state => ({
+  Settings: state.Settings
+});
+
+export default connect(
+  mapStateToProps,
+  {}
+)(Speaker);

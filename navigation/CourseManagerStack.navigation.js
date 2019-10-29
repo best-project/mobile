@@ -19,6 +19,7 @@ const CourseManagerStackNavigation = createStackNavigator({
             }}
             type="home"
             title={navigation.state.params.title}
+            needConfirmation={true}
           />
         ),
         headerStyle,
@@ -36,6 +37,7 @@ const CourseManagerStackNavigation = createStackNavigator({
               navigation.goBack();
             }}
             type="back"
+            needConfirmation={true}
           />
         ),
         headerStyle,
@@ -53,6 +55,7 @@ const CourseManagerStackNavigation = createStackNavigator({
               navigation.goBack();
             }}
             type="back"
+            needConfirmation={true}
           />
         ),
         headerStyle,
@@ -70,6 +73,7 @@ const CourseManagerStackNavigation = createStackNavigator({
               navigation.goBack();
             }}
             type="back"
+            needConfirmation={true}
           />
         ),
         headerStyle,

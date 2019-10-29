@@ -2,7 +2,7 @@ import { USER_INIT_COURSE, USER_SET_BEST_RESULT } from "../actions/types";
 
 const initialState = {
   id: "YbSwWMX73DMY7RdDSKev",
-  nickname: "Pavel",
+  nickname: "Nickname",
   avatar: "https://form-physic.com/wp-content/uploads/2019/03/avatar-1.jpg",
   token: "example",
   level: 1,
@@ -39,7 +39,10 @@ export default function(state = initialState, action) {
       const courseIndex = profileCourses.findIndex(item => item.id === id);
       const course = profileCourses.find(item => item.id === id);
       if (courseIndex !== -1 && course.points < points) {
-        let newProfileCourses = profileCourses.slice(courseIndex + 1, profileCourses.length);
+        let newProfileCourses = profileCourses.slice(
+          courseIndex + 1,
+          profileCourses.length
+        );
         course.points = points;
         newProfileCourses = [...newProfileCourses, course];
         return {

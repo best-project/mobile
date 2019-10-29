@@ -6,6 +6,7 @@ import LearnStandardAfterCourseComponent from "./components/LearnStandardAfterCo
 import LearnStandardQuestionComponent from "./components/LearnStandardQuestion.component";
 import LearnStandardNextButtonComponent from "./components/LearnStardardNextButton.component";
 import { shuffleArray } from "../../common/services/helpers";
+import LearnStandardQuestionNoImageComponent from "./components/LearnStandardQuestionNoImage.component";
 
 const StandardLearnScreen = props => {
   const [progressLevel, setProgressLevel] = useState(0);
@@ -48,7 +49,6 @@ const StandardLearnScreen = props => {
   }
 
   function restart() {
-    console.log("restart");
     setNewQuestionsList();
     setProgressLevel(0);
     setCurrentQuestion(0);
@@ -94,9 +94,16 @@ const StandardLearnScreen = props => {
         <ProgressBar progressLevel={progressLevel} />
         {!!questionsList.length && questionsList[0] && (
           <>
-            <LearnStandardQuestionComponent
-              data={questionsList[currentQuestion]}
-            />
+            {questionsList[currentQuestion].image ? (
+              <LearnStandardQuestionComponent
+                data={questionsList[currentQuestion]}
+              />
+            ) : (
+              <LearnStandardQuestionNoImageComponent
+                data={questionsList[currentQuestion]}
+              />
+            )}
+
             <LearnStandardNextButtonComponent onPress={nextButtonPress} />
           </>
         )}

@@ -6,6 +6,7 @@ export const userInitCourse = id => dispatch => {
     points: 0,
     passed: false
   };
+
   dispatch({
     type: USER_INIT_COURSE,
     payload: newCourseItem
